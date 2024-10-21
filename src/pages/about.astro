@@ -11,9 +11,9 @@
     <title>Astro</title>
 </head>
 <body>
-    <a href="/">Home</a>
-    <a href="/blog/">Blog</a>
-    <a href="/about/">About</a>
+    <a href={`${import.meta.env.BASE_URL}`}>Home</a>
+    <a href={`${import.meta.env.BASE_URL}/blog`}>Blog</a>
+    <a href={`${import.meta.env.BASE_URL}/about`}>About</a>
     <h1>About</h1>
     <p>Hi, I'm Zoltan a software engineer with eight years of experience currently working for idealo. If you want
     to find more about me, feel free to check out my profiles below.
