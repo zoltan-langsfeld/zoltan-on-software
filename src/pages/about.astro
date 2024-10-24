@@ -1,22 +1,9 @@
 ---
 
----
-
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-</head>
-<body>
-    <a href={`${import.meta.env.BASE_URL}`}>Home</a>
-    <a href={`${import.meta.env.BASE_URL}/blog`}>Blog</a>
-    <a href={`${import.meta.env.BASE_URL}/about`}>About</a>
+import Layout from "../layouts/layout.astro";---
+<Layout title="About">
     <h1>About</h1>
     <p>Hi, I'm Zoltan a software engineer with eight years of experience currently working for idealo. If you want
-    to find more about me, feel free to check out my profiles below.
+        to find more about me, feel free to check out my profiles below.
     </p>
-</body>
-</html>
+</Layout>

@@ -1,20 +1,9 @@
 ---
 
----
+import Main from "../layouts/layout.astro";
+import Layout from "../layouts/layout.astro";---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<a href={`${import.meta.env.BASE_URL}`}>Home</a>
-		<a href={`${import.meta.env.BASE_URL}/blog`}>Blog</a>
-		<a href={`${import.meta.env.BASE_URL}/about`}>About</a>
-		<h1>Zoltan on Software</h1>
-		<p>Hello, this is my first paragraph!</p>
-	</body>
-</html>
+<Layout title="Main page">
+	<h1>Zoltan on Software</h1>
+	<p>Hello, this is my first paragraph!</p>
+</Layout>
