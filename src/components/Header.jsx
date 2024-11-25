@@ -3,6 +3,7 @@ const Header = () => {
         <>
             <a href={`${import.meta.env.BASE_URL}`}>Home</a>
             <a href={`${import.meta.env.BASE_URL}/blog`}>Blog</a>
+            <a href={`${import.meta.env.BASE_URL}/projects`}>Projects</a>
             <a href={`${import.meta.env.BASE_URL}/about`}>About</a>
         </>
     );
