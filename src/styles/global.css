@@ -1,76 +1,85 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'syne', ui-sans-serif, sans-serif;
-    --font-sans2: 'montserrat', ui-sans-serif, sans-serif;
+  --font-sans: "syne", ui-sans-serif, sans-serif;
+  --font-sans2: "montserrat", ui-sans-serif, sans-serif;
 
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-primary-text: var(--primary-text);
-    --color-secondary-text: var(--secondary-text);
-    --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary-text: var(--primary-text);
+  --color-secondary-text: var(--secondary-text);
+  --color-accent: var(--accent);
 }
 
 @font-face {
-    font-family: 'Syne';
-    src: url('/public/fonts/Syne/Syne-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Syne";
+  src: url("/public/fonts/Syne/Syne-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'Montserrat';
-    src: url('/public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Montserrat";
+  src: url("/public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --background: oklch(0.18 0.0617 247.76);
- --foreground: oklch(0.32 0.0691 247.76);
-    /* --background:oklch(0.67 0.0296 259.41);
+  --background: oklch(0.18 0.0617 247.76);
+  --foreground: oklch(0.32 0.0691 247.76);
+  /* --background:oklch(0.67 0.0296 259.41);
     --foreground: oklch(0.18 0.0617 247.76); */
 
-    --primary-text: oklch(0.99 0.0617 289.76);
-    --secondary-text: oklch(0.99 0.0296 88.56);
+  --primary-text: oklch(0.99 0.0617 289.76);
+  --secondary-text: oklch(0.99 0.0296 88.56);
 
-    --accent: oklch(0.75 0.1258 81.53);
+  --accent: oklch(0.75 0.1258 81.53);
 }
 
 @layer base {
-    body {
-        font-family: var(--font-sans);
-        background-color: var(--background);
-        /* background: radial-gradient(var(--color-foreground), var(--color-background) 70%); */ 
-        color: var(--color-secondary-text);
-    }  
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    /* background: radial-gradient(var(--color-foreground), var(--color-background) 70%); */
+    color: var(--color-secondary-text);
+  }
 
-    h1 {
-        @apply text-5xl font-light lowercase;
-    }
-    p {
-        @apply text-base font-sans2 font-light;
-    }
-   
-    @keyframes slide {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-10px);
-        }
-    } 
-    .sidebar a {
-        border-bottom: 1px solid var(--color-secondary-text);
-        text-align: end;
-        font-weight: 100;
-        text-transform: lowercase;
-        display: inline-block; /* Required for transform to work */
-    }
+  h1 {
+    @apply text-5xl font-light lowercase;
+  }
+  p {
+    @apply text-base font-sans2 font-light;
+  }
 
-    .sidebar a:hover {
-        animation: slide 2s ease-in-out;
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
     }
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+  .sidebar .nav a {
+    border-bottom: 1px solid var(--color-secondary-text);
+    text-align: end;
+    font-weight: 100;
+    text-transform: lowercase;
+    transition:
+      transform 0.2s ease,
+      font-size 0.2s ease;
+  }
 
+  .sidebar .icons a {
+    transition:
+      transform 0.2s ease,
+      font-size 0.2s ease;
+  }
+
+  .sidebar a:hover {
+    transform: scale(1.1);
+    font-size: 1.4rem;
+  }
 }
