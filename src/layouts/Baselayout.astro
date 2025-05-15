@@ -19,9 +19,9 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="flex h-fit min-h-screen flex-col gap-y-12">
+    <div class="flex h-fit min-h-screen flex-col gap-y-6 md:gap-y-12">
       <Header  client:load/>
-      <main class="grow mx-auto flex max-w-3xl w-full items-start px-6 gap-x-6 md:gap-x-18">
+      <main class="grow mx-auto flex max-w-3xl px-6 gap-x-6 md:gap-x-18">
         <div class="md:basis-2/3 flex flex-col gap-y-1">
           <slot />
         </div>
