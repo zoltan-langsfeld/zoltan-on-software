@@ -1,4 +1,3 @@
-import SvgIcon from "@/utils/SvgReactIcons";
 import { useState, useEffect, useRef } from "react";
 
 const NAV_LINKS = [
@@ -16,8 +15,8 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-10 backdrop-blur-md">
-      <div className="grow mx-auto flex max-w-3xl items-center py-4 px-6 gap-x-6 md:gap-x-18">
-        <div className="grow md:basis-2/3 flex items-center justify-between">
+      <div className="w-full max-w-3xl mx-auto px-6 flex items-center py-4 gap-x-6 md:gap-x-18">
+        <div className="flex min-w-0 grow md:basis-2/3 items-center justify-between">
           <a
             href="/zoltan-on-software"
             className="font-sans2 text-base md:text-2xl tracking-widest font-light"
