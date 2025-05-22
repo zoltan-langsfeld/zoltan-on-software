@@ -5,6 +5,8 @@
     "jsxImportSource": "react",
     "resolveJsonModule": true,
     "strict": true,
+    "strictNullChecks": true,
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
