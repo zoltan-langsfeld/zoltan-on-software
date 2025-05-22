@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "syne", ui-sans-serif, sans-serif;
+  --font-sans2: "montserrat", ui-sans-serif, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary-text: var(--primary-text);
+  --color-secondary-text: var(--secondary-text);
+  --color-accent: var(--accent);
+}
+
+@font-face {
+  font-family: "Syne";
+  src: url("/public/fonts/Syne/Syne-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: oklch(0.18 0.0617 247.76);
+  --foreground: oklch(0.32 0.0691 247.76);
+
+  --primary-text: oklch(0.99 0.0617 289.76);
+  --secondary-text: oklch(0.99 0.0296 88.56);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--background);
+    /* background: radial-gradient(var(--color-foreground), var(--color-background) 70%); */
+    color: var(--color-secondary-text);
+  }
+
+  h1 {
+    @apply text-5xl font-light lowercase;
+  }
+  p {
+    @apply text-base font-sans2 font-light;
+  }
+
+  .sidebar .nav a {
+    border-bottom: 1px solid var(--color-secondary-text);
+    text-align: end;
+    font-weight: 100;
+    text-transform: lowercase;
+    transition:
+      transform 0.2s ease,
+      font-size 0.2s ease;
+  }
+
+  .sidebar .icons a {
+    transition:
+      transform 0.2s ease,
+      font-size 0.2s ease;
+  }
+
+  @media (min-width: 640px) {
+    .sidebar a:hover {
+      transform: scale(1.1);
+      font-size: 1.4rem;
+    }
+  }
+}

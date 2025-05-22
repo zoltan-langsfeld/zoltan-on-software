@@ -1,15 +1,32 @@
 ---
-
-import Layout from "../layouts/layout.astro";---
+import Layout from "@/layouts/Baselayout.astro";
+---
 
 <Layout title="Blog">
-    <h1>Blog</h1>
-    <p>
-        This is where my blog posts will go.
-    </p>
-    <ul>
-        <li><a href={`${import.meta.env.BASE_URL}/posts/post-1`}>Post 1</a></li>
-        <li><a href={`${import.meta.env.BASE_URL}/posts/post-2`}>Post 2</a></li>
-        <li><a href={`${import.meta.env.BASE_URL}/posts/post-3`}>Post 3</a></li>
+  <h1 class="text-right mb-4">Blog</h1>
+  <div>
+    <ul class="text-right flex flex-col gap-y-4">
+      <li class="border-1 border-secondary-text p-2 md:p-4 w-full rounded">
+        <a href={`${import.meta.env.BASE_URL}/posts/post-1`}>
+          <h2 class="text-xl md:text-4xl">My first blog post</h2>
+          <em>07-01-2025</em>
+          <p>Subtitle 1</p>
+        </a>
+      </li>
+        <li class="border-1 border-secondary-text p-2 w-full rounded">
+        <a href={`${import.meta.env.BASE_URL}/posts/post-1`}>
+          <h2 class="text-xl md:text-4xl">My Second Blog Post</h2>
+          <em>07-02-2025</em>
+          <p>Subtitle 2</p>
+        </a>
+      </li>
+        <li class="border-1 border-secondary-text p-2 w-full rounded">
+        <a href={`${import.meta.env.BASE_URL}/posts/post-1`}>
+          <h2 class="text-xl md:text-4xl">My Third Blog Post</h2>
+          <em>07-03-2025</em>
+          <p>Subtitle 3</p>
+        </a>
+      </li>
     </ul>
+  </div>
 </Layout>
