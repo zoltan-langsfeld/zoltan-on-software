@@ -5,12 +5,14 @@ pubDate: 2022-07-01
 description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
 image:
-  url: "https://docs.astro.build/assets/rose.webp"
+  url: "./cloudy.webp"
   alt: "The Astro logo on a dark background with a pink glow."
 tags: ["astro", "blogging", "learning in public"]
 ---
 
 # My First Blog Post
+
+To add empty lines in Markdown, simply insert one or more blank lines (press Enter twice) between sections or paragraphs. For example:
 
 Published on: 2022-07-01
 
