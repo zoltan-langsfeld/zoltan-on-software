@@ -63,8 +63,8 @@
     font-weight: 100;
     text-transform: lowercase;
     transition:
-      transform 0.15s cubic-bezier(0.62, 0.16, 0.13, 1.01),
-      font-size 0.15s cubic-bezier(0.62, 0.16, 0.13, 1.01);
+      transform 0.15s cubic-bezier(0.62, 0.16, 0.13, 0.8),
+      font-size 0.15s cubic-bezier(0.62, 0.16, 0.13, 0.8);
   }
 
   .sidebar .icons a {

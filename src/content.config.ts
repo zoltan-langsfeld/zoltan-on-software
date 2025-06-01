@@ -1,9 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 
-import { glob} from 'astro/loaders';
+import {glob} from 'astro/loaders';
 
 const blog = defineCollection({ 
-   loader: glob({patter:"**/*.md", base:"./src/content/blog/2025"}),
+   loader: glob({pattern:"**/*.md", base:"./src/content/blog/2025"}),
    schema: ({image}) => 
     z.object({
         title: z.string().max(60),
