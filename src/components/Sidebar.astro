@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { NAV_LINKS } from "@/consts";
+import { NAV_LINKS, SOCIAL_LINKS } from "@/consts";
 ---
 
 <sidebar class="mt-2 sidebar ">
@@ -8,7 +8,7 @@ import { NAV_LINKS } from "@/consts";
     {
       NAV_LINKS.map((link)=> (
         <div class="h-8 items-end w-full text-right">
-          <a href="{`${import.meta.env.BASE_URL}/${link.href}`}" class="block border-b-1">{link.label}</a>
+          <a href={`${import.meta.env.BASE_URL}${link.href}`} class="block border-b-1">{link.label}</a>
           </div>
       ))
     }
@@ -16,14 +16,13 @@ import { NAV_LINKS } from "@/consts";
 
   <div class="icons flex flex-col grow items-end">
     <div class="items-center flex flex-col gap-y-1">
-      <a href="https://github.com/zoltan-langsfeld" target="_blank" class="h-8"
-      ><Icon name="github" class="md:text-2xl" /></a
-      >
-      <a href="https://www.linkedin.com/in/zoltan-lajtavari/" target="_blank" class="h-8"
-        ><Icon name="linkedIn" class="md:text-2xl" /></a
-        >
-        <a href="mailto:zoltan@langsfeld.me" target="_blank" class="h-8"
-        ><Icon name="mail" class="md:text-2xl"/></a>
+      {
+        SOCIAL_LINKS.map((link) => (
+          <a href={link.href} target="_blank" class="h-8">
+            <Icon name={link.label} class:list="md:text-2xl" />
+          </a>
+        ))
+      }
       </div>   
   </div>
 </sidebar>
