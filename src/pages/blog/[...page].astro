@@ -4,13 +4,14 @@ import type { PaginateFunction, Page } from "astro";
 
 import Layout from "@/layouts/Baselayout.astro";
 import BlogCard from "@/components/BlogCard.astro";
+import Pagination from "@/components/Pagination.astro";
 
 import { getAllPosts } from "@/lib/blogData";
 import { SITE } from "@/consts"
 
 export async function getStaticPaths({paginate,}: {paginate: PaginateFunction}) {
   const posts = await getAllPosts();
-  return await paginate(posts, {pageSize: SITE.postsPerPage || 4});
+    return paginate(posts, {pageSize: 2});
 };
 
 
@@ -33,14 +34,6 @@ const { page } = Astro.props;
             </ul>
           )}
     
-      <nav class="flex justify-between pt-8">
-      {page.url.prev ? (
-        <a href={page.url.prev === '/blog/1' ? '/blog' : page.url.prev}>&larr; Newer Posts</a>
-      ) : <div />}
-
-      {page.url.next ? (
-        <a href={page.url.next}>Older Posts &rarr;</a>
-      ) : <div />}
-    </nav>
+     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </div>
 </Layout>

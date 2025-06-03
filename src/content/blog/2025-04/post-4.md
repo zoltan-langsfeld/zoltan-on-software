@@ -1,12 +1,10 @@
 ---
 layout: ../../layouts/Baselayout.astro
 title: My Fourth Blog Post
-description: "I had some challenges, but asking in the community really helped!"
+description: "Sharing what I learned while building with Astro and how the community helped me"
 pubDate: 2025-04-13
 author: Astro Learner
-image:
-  url: "https://docs.astro.build/assets/rays.webp"
-  alt: "The Astro logo on a dark background with rainbow rays."
+image: ./blogPost.png
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 
