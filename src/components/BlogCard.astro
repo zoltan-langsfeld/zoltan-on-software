@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDate } from "@/lib/utils";
+
+interface Props {
+	entry: CollectionEntry<"blog">;
+}
+
+const { entry } = Astro.props;
+const formattedDate = formatDate(entry.data.pubDate);
+---
+<li class="hover:bg-foreground/80 rounded-xl border p-4 transition-colors duration-300 ease-in-out">
+  <a href={`/${entry.collection}/${entry.slug}`} class="flex flex-col gap-4 sm:flex-row">
+    <div class="flex-grow">
+      <h2 class="text-xl md:text-2xl font-semibold mb-1">{entry.data.title}</h2>
+      <em class="text-sm text-muted mb-1">{formattedDate}</em>
+      <p class="text-base text-secondary-text">{entry.data.description}</p>
+    </div>
+  </a>
+</li>
+    

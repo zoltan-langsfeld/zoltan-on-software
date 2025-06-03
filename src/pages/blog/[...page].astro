@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { PaginateFunction, Page } from "astro";
+
+import Layout from "@/layouts/Baselayout.astro";
+import BlogCard from "@/components/BlogCard.astro";
+
+import { getAllPosts } from "@/lib/blogData";
+import { SITE } from "@/consts"
+
+export async function getStaticPaths({paginate,}: {paginate: PaginateFunction}) {
+  const posts = await getAllPosts();
+  return await paginate(posts, {pageSize: SITE.postsPerPage || 4});
+};
+
+
+const { page } = Astro.props;
+---
+
+<Layout title="Blog">
+  <h1 class="text-right mb-4">Blog</h1>
+  <div>
+    
+      {page.data.length === 0 ? (
+        <p> No data in posts</p> )
+        : (
+            <ul class="text-right flex flex-col gap-y-4">
+              {page.data.map((post: CollectionEntry<"blog">) => (
+                <li>
+                  <BlogCard entry={post} />
+                </li>
+              ))}
+            </ul>
+          )}
+    
+      <nav class="flex justify-between pt-8">
+      {page.url.prev ? (
+        <a href={page.url.prev === '/blog/1' ? '/blog' : page.url.prev}>&larr; Newer Posts</a>
+      ) : <div />}
+
+      {page.url.next ? (
+        <a href={page.url.next}>Older Posts &rarr;</a>
+      ) : <div />}
+    </nav>
+  </div>
+</Layout>

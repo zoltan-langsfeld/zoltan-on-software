@@ -2,7 +2,7 @@
 layout: ../../layouts/Baselayout.astro
 title: My Second Blog Post
 description: "After learning some Astro, I couldn't stop!"
-pubDate: 2022-07-02
+pubDate: 2024-03-23
 author: Astro Learner
 image:
   url: "https://docs.astro.build/assets/arc.webp"
