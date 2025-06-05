@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+import Layout from "@/layouts/Baselayout.astro";
+
+import { getAllPosts } from "@/lib/blogData";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  //   return posts.map((post) => ({
+  //     params: { id: post.id },
+  //     props: post,
+  //   }));
+
+  const paths = posts.map((post) => ({
+    params: { id: post.id },
+    props: post,
+  }));
+  console.log("[POst PAths]:", paths);
+  return paths;
+}
+
+if (Astro.params.id?.startsWith("page")) {
+  throw new Error("Page route attempted to match post route");
+}
+
+const post = Astro.props;
+const currentPostId = Astro.params.id;
+console.log("Post ID:", post.id);
+const { Content, headings } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  {
+    post.data.image && (
+      <Image
+        src={post.data.image}
+        alt={post.data.title}
+        class="col-span-full mx-auto w-full-max-w-5xl object-cover"
+        width={1200}
+        height={630}
+      />
+    )
+  }
+  <h1 class="text-right mb-4">{post.data.title}</h1>
+  <article class="prose col-start-2 max-w-none">
+    <Content />
+  </article>
+</Layout>

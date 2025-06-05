@@ -1,17 +1,18 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { PaginateFunction, Page } from "astro";
+import type { PaginateFunction } from "astro";
+import { SITE } from "@/consts";
+
 
 import Layout from "@/layouts/Baselayout.astro";
 import BlogCard from "@/components/BlogCard.astro";
 import Pagination from "@/components/Pagination.astro";
 
 import { getAllPosts } from "@/lib/blogData";
-import { SITE } from "@/consts"
 
 export async function getStaticPaths({paginate,}: {paginate: PaginateFunction}) {
   const posts = await getAllPosts();
-    return paginate(posts, {pageSize: 2});
+    return paginate(posts, {pageSize: SITE.postsPerPage || 4});
 };
 
 
