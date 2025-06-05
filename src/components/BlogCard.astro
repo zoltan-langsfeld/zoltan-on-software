@@ -5,7 +5,6 @@ import internetMap from "../content/blog/2024-01/netTransformerInternetMap.webp"
 
 const { entry } = Astro.props;
 const formattedDate = formatDate(entry.data.pubDate);
-console.log("[BlogCard] Entry:", entry.props.id);
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -13,7 +12,7 @@ const base = import.meta.env.BASE_URL;
   class="hover:bg-blue-900/15 rounded-xl border-[0.2px] p-4 transition-colors duration-300 ease-in-out"
 >
   <a
-    href={`/${base}/${entry.collection}/${entry.props.id}`}
+    href={`/${base}/${entry.collection}/${entry.id}`}
     class="flex flex-col gap-4 sm:flex-row sm:items-center"
   >
     {
