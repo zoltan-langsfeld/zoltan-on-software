@@ -1,31 +1,29 @@
 ---
-import type { CollectionEntry } from "astro:content"; 
 import { formatDate } from "@/lib/utils";
 import { Image } from "astro:assets";
-import paper from "../content/blog/2024-03/blogPost.png";
+import internetMap from "../content/blog/2024-01/netTransformerInternetMap.webp";
 
 const { entry } = Astro.props;
-console.log("BlogCard entry:", entry.data.image);
+console.log('Image entry:', entry.data.image);
 const formattedDate = formatDate(entry.data.pubDate);
 ---
-<li class="hover:bg-foreground/15 rounded-xl border p-4 transition-colors duration-300 ease-in-out">
+<li class="hover:bg-blue-900/15 rounded-xl border-[0.2px] p-4 transition-colors duration-300 ease-in-out">
   <a href={`/${entry.collection}/${entry.slug}`} class="flex flex-col gap-4 sm:flex-row sm:items-center">
    {
     entry.data.image && (
       <div class="w-full sm:w-1/3 sm:shrink-0">
       <Image
-        src= {paper}
+        src= { entry.data.image || internetMap }
         alt={entry.data.title}
-        class="object-cover"
-        loading="lazy"
+        class="object-cover rounded-sm"
         />
         </div>
     )
    } 
-   <div class="text-left">
-     <em class="font-mono text-secondary-text text-xs mb-2 font">{formattedDate}</em>
+   <div class="text-left hover:text-secondary-text">
+     <em class="font-mono text-xs mb-2 font">{formattedDate}</em>
       <h3 class="font-display text-lg md:text-xl font-medium mb-1">{entry.data.title}</h3>
-      <p class="text-base">{entry.data.description}</p>
+      <p class="text-xs line-clamp-2 overflow-hidden ">{entry.data.description}</p>
     </div>
   </a>
 </li>
