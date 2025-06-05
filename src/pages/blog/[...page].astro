@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { PaginateFunction } from "astro";
+import { SITE } from "@/consts";
+
+
+import Layout from "@/layouts/Baselayout.astro";
+import BlogCard from "@/components/BlogCard.astro";
+import Pagination from "@/components/Pagination.astro";
+
+import { getAllPosts } from "@/lib/blogData";
+
+export async function getStaticPaths({paginate,}: {paginate: PaginateFunction}) {
+  const posts = await getAllPosts();
+    return paginate(posts, {pageSize: SITE.postsPerPage || 4});
+};
+
+
+const { page } = Astro.props;
+---
+
+<Layout title="Blog">
+  <h1 class="text-right mb-4">Blog</h1>
+  <div>
+    
+      {page.data.length === 0 ? (
+        <p> No Posts available </p> )
+        : (
+            <ul class="text-right flex flex-col gap-y-4">
+              {page.data.map((post: CollectionEntry<"blog">) => (
+                <li>
+                  <BlogCard entry={post} />
+                </li>
+              ))}
+            </ul>
+          )}
+    
+     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </div>
+</Layout>
