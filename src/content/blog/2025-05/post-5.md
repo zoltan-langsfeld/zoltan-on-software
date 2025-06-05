@@ -4,7 +4,7 @@ title: My Fifth Blog Post
 description: "My experience with setbacks!"
 pubDate: 2025-05-11
 author: Astro Learner
-image: "./blogPost.png"
+image: "./netTransformerInternetMap.webp"
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 

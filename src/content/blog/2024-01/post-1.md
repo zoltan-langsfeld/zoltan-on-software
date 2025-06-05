@@ -4,7 +4,7 @@ title: "My First Blog Post"
 description: "This is the first post of my new Astro blog."
 pubDate: 2024-01-01
 author: "Astro Learner"
-image: "./cloudy.webp"
+image: "./netTransformerInternetMap.webp"
 tags: ["astro", "blogging", "learning in public"]
 ---
 
