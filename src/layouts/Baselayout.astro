@@ -14,24 +14,42 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/zoltan-on-software/z-logo.svg" />
-    <link rel="preload" href="/zoltan-on-software/fonts/Syne/Syne-VariableFont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/zoltan-on-software/z-logo.svg"
+    />
+    <link
+      rel="preload"
+      href="/zoltan-on-software/fonts/Syne/Syne-VariableFont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href={`${import.meta.env.BASE_URL}fonts/Montserrat/Montserrat-VariableFont.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
     <div class="flex h-fit min-h-screen flex-col gap-y-6 md:gap-y-12 sm:px-4">
-      <Header  client:load/>
-     <main class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14">
-      <!-- Main Content Column -->
-  <div class="flex min-w-0 grow flex-col gap-y-1">
-    <slot />
-  </div>
+      <Header client:load />
+      <main
+        class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14"
+      >
+        <!-- Main Content Column -->
+        <div class="flex min-w-0 grow flex-col gap-y-1">
+          <slot />
+        </div>
 
-  <!-- Sidebar -->
-  <Sidebar class="hidden md:block" />
-</main>
+        <!-- Sidebar -->
+        <Sidebar class="hidden md:block" />
+      </main>
       <Footer />
     </div>
   </body>
