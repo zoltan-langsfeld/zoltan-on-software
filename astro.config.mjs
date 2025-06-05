@@ -7,7 +7,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   // If you're hosting under /zoltan-on-software on GitHub Pages:
-  base: '/zoltan-on-software/',
+  base: '/zoltan-on-software',
 
   // Other configuration options...
   trailingSlash: "never",
