@@ -18,8 +18,8 @@ const Header = () => {
       <div className="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl px-6 items-center py-4 gap-x-2 md:gap-x-14">
         <div className="flex min-w-0 grow md:basis-2/3 items-center justify-between">
           <a
-            href="/zoltan-on-software"
-            className="font-sans2 text-base md:text-2xl tracking-widest font-light"
+            href={`${import.meta.env.BASE_URL}`}
+            className="main-title text-base md:text-2xl tracking-widest font-light"
           >
             ZOLTAN ON SOFTWARE
           </a>
