@@ -4,7 +4,7 @@ title: My Third Blog Post
 description: "I had some challenges, but asking in the community really helped!"
 pubDate: 2025-01-01
 author: Astro Learner
-image: ./blogPost.png
+image: "./blogPost.png"
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 

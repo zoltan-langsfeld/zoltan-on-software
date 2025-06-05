@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/Baselayout.astro
 title: My Sixth Blog Post
 description: "Learning Astro was easier thanks to helpful advice from others."
 pubDate: 2025-06-02
 author: Astro Learner
-image: ./blogPost.png
+image: "./blogPost.png"
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 

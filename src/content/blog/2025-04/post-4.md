@@ -4,7 +4,7 @@ title: My Fourth Blog Post
 description: "Sharing what I learned while building with Astro and how the community helped me"
 pubDate: 2025-04-13
 author: Astro Learner
-image: ./blogPost.png
+image: "./blogPost.png"
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 

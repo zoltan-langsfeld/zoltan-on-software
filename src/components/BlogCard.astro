@@ -1,32 +1,31 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content"; 
 import { formatDate } from "@/lib/utils";
 import { Image } from "astro:assets";
-
-interface Props {
-	entry: CollectionEntry<"blog">;
-}
+import paper from "../content/blog/2024-03/blogPost.png";
 
 const { entry } = Astro.props;
+console.log("BlogCard entry:", entry.data.image);
 const formattedDate = formatDate(entry.data.pubDate);
 ---
-<li class="hover:bg-foreground/15 rounded-xl border p-4 transition-colors duration-300 ease-in-out h-2xl">
+<li class="hover:bg-foreground/15 rounded-xl border p-4 transition-colors duration-300 ease-in-out">
   <a href={`/${entry.collection}/${entry.slug}`} class="flex flex-col gap-4 sm:flex-row sm:items-center">
    {
     entry.data.image && (
+      <div class="w-full sm:w-1/3 sm:shrink-0">
       <Image
-        src={entry.data.image}
+        src= {paper}
         alt={entry.data.title}
-        class="w-full sm:w-1/3 h-auto rounded-lg object-cover"
+        class="object-cover"
         loading="lazy"
-        width={300}
-        height={200} />
+        />
+        </div>
     )
    } 
-   <div class="flex-grow">
-      <h2 class="text-xl md:text-2xl font-semibold mb-1">{entry.data.title}</h2>
-      <em class="text-sm text-muted mb-1">{formattedDate}</em>
-      <p class="text-base text-secondary-text">{entry.data.description}</p>
+   <div class="text-left">
+     <em class="font-mono text-secondary-text text-xs mb-2 font">{formattedDate}</em>
+      <h3 class="font-display text-lg md:text-xl font-medium mb-1">{entry.data.title}</h3>
+      <p class="text-base">{entry.data.description}</p>
     </div>
   </a>
 </li>

@@ -23,7 +23,7 @@ const { page } = Astro.props;
   <div>
     
       {page.data.length === 0 ? (
-        <p> No data in posts</p> )
+        <p> No Posts available </p> )
         : (
             <ul class="text-right flex flex-col gap-y-4">
               {page.data.map((post: CollectionEntry<"blog">) => (

@@ -4,7 +4,7 @@ title: My Second Blog Post
 description: "After learning some Astro, I couldn't stop!"
 pubDate: 2024-03-23
 author: Astro Learner
-image: ./blogPost.png
+image: "./blogPost.png"
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
 
