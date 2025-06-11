@@ -1,7 +1,7 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
-
+import { formatDate } from "@/lib/utils";
+import { readingTime } from "@/lib/utils";
 import Layout from "@/layouts/Baselayout.astro";
 
 import { getAllPosts } from "@/lib/blogData";
@@ -9,17 +9,11 @@ import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
-  //   return posts.map((post) => ({
-  //     params: { id: post.id },
-  //     props: post,
-  //   }));
 
-  const paths = posts.map((post) => ({
+  return posts.map((post) => ({
     params: { id: post.id },
     props: post,
   }));
-  console.log("[POst PAths]:", paths);
-  return paths;
 }
 
 if (Astro.params.id?.startsWith("page")) {
@@ -44,8 +38,13 @@ const { Content, headings } = await render(post);
       />
     )
   }
-  <h1 class="text-right mb-4">{post.data.title}</h1>
-  <article class="prose col-start-2 max-w-none">
+  <h1 class="text-center my-4">{post.data.title}</h1>
+  <div class="flex flex-wrap items-center justify-center gap-2 text-xs mb-4">
+    <span>{formatDate(post.data.pubDate)}</span>
+    <em class="text-gray-500">|</em>
+    <span>{readingTime(post.body!)}</span>
+  </div>
+  <article class="prose prose-zoltan">
     <Content />
   </article>
 </Layout>
