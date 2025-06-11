@@ -19,18 +19,17 @@ const Header = () => {
         <div className="flex min-w-0 grow md:basis-2/3 items-center justify-between">
           <a
             href={`${import.meta.env.BASE_URL}`}
-            className="main-title text-base md:text-2xl tracking-widest font-light"
+            className="main-title text-secondary-text text-base md:text-2xl tracking-widest font-light"
           >
             ZOLTAN ON SOFTWARE
           </a>
           {/* Mobile burger menu */}
-          {/* biome-ignore lint/a11y/useButtonType: <explanation> */}
           <button
             onClick={toggleMenu}
             aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            className="flex flex-col justify-between md:hidden w-4 h-4 focus:outline-none"
+            className="flex flex-col justify-between md:hidden w-4 h-4 focus-visible:ring-2 focus-visible:ring-accent"
           >
             <span
               className={`h-0.5 w-4 bg-secondary-text origin-center transition-all duration-200 ease-in-out
@@ -55,17 +54,17 @@ const Header = () => {
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className="w-full">
+        <nav className="w-full" id="mobile-menu">
           <ul className="text-right px-6">
             {NAV_LINKS.map((link) => (
               <li key={link.name} className="border-b py-2">
-                <a href={link.href} className="block text-secondary-text">
+                <a href={link.href} className="block">
                   {link.name}
                 </a>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
       )}
     </div>
   );

@@ -1,21 +1,39 @@
 ---
 import { Icon } from "astro-icon/components";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/consts";
+import { cn } from "@/lib/utils";
+
+const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname.replace(base, "");
 ---
 
-<sidebar class="mt-2 sidebar">
-  <nav class="nav flex-col gap-y-1 grow mb-4 hidden md:flex">
+<sidebar class="mt-2 sidebar" aria-label="Sidebar with Navigation">
+  <nav
+    class="nav flex-col gap-y-1 grow mb-4 hidden md:flex"
+    aria-label="Main Navigation"
+  >
     {
-      NAV_LINKS.map((link) => (
-        <div class="h-8 items-end w-full text-right">
-          <a
-            href={`${import.meta.env.BASE_URL}${link.href}`}
-            class="block border-b-1"
-          >
-            {link.label}
-          </a>
-        </div>
-      ))
+      NAV_LINKS.map((link) => {
+        let isActive = currentPath === link.href;
+        console.log("isActive:", isActive, "Link:", link.href);
+        return (
+          <div class="h-8 items-end w-full text-right">
+            <a
+              href={`${import.meta.env.BASE_URL}${link.href}`}
+              class={cn(
+                "block border-b-[0.5px] border-primary-text hover:border-b-1",
+                {
+                  "border-b-1 border-links text-links": isActive,
+                  "text-primary-text": !isActive,
+                }
+              )}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </div>
+        );
+      })
     }
   </nav>
 
