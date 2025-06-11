@@ -21,8 +21,8 @@
 
 @font-face {
   font-family: "Syne";
-  src: url("/zoltan-on-software/fonts/Syne/Syne-VariableFont.woff2")
-    format("woff2-variations");
+  src: url("/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf")
+    format("truetype");
   font-optical-sizing: auto;
   font-weight: 400 900;
   font-style: normal;
@@ -31,8 +31,8 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.woff2")
-    format("woff2-variations");
+  src: url("/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf")
+    format("truetype");
   font-optical-sizing: auto;
   font-weight: 100 900;
   font-style: normal;
@@ -43,8 +43,8 @@
   --background: oklch(0.18 0.0617 247.76);
   --foreground: oklch(0.32 0.0691 247.76);
 
-  --primary-text: oklch(0.99 0.0296 88.56);
-  --secondary-text: oklch(0.9971 0.0074 105.88);
+  --primary-text: oklch(0.94 0.0496 99.56);
+  --secondary-text: oklch(0.99 0 130);
   --links: oklch(0.86 0.5776 258.35);
   --accent: oklch(0.68 0.1776 99.53);
 }
@@ -60,20 +60,19 @@
 
   body {
     font-family: var(--font-sans);
+    font-weight: 300;
     font-synthesis: none;
     background-color: var(--background);
     color: var(--color-primary-text);
   }
 
   h1 {
-    @apply text-5xl font-light lowercase;
+    @apply text-5xl;
   }
   p {
-    @apply text-base font-light;
+    @apply text-base;
   }
-  a {
-    @apply font-normal;
-  }
+
   @media (min-width: 640px) {
     h1 {
       @apply font-normal;
@@ -84,12 +83,10 @@
   }
 
   .sidebar .nav a {
-    font-weight: 100;
     text-transform: lowercase;
     transition:
       transform 0.15s cubic-bezier(0.62, 0.16, 0.13, 0.8),
-      font-size 0.15s cubic-bezier(0.62, 0.16, 0.13, 0.8),
-      font-weight;
+      font-size 0.15s cubic-bezier(0.62, 0.16, 0.13, 0.8);
   }
 
   .sidebar .icons a {
@@ -102,7 +99,6 @@
     .sidebar .nav a:hover {
       transform: scale(1.1);
       font-size: 1.2rem;
-      font-weight: 900;
     }
   }
 }
