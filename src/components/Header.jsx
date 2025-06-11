@@ -19,7 +19,7 @@ const Header = () => {
         <div className="flex min-w-0 grow md:basis-2/3 items-center justify-between">
           <a
             href={`${import.meta.env.BASE_URL}`}
-            className="main-title text-secondary-text text-base md:text-2xl tracking-widest font-light"
+            className="main-title text-secondary-text text-base md:text-2xl tracking-widest font-light md:font-thin"
           >
             ZOLTAN ON SOFTWARE
           </a>
@@ -54,10 +54,13 @@ const Header = () => {
 
       {/* Dropdown menu */}
       {isOpen && (
-        <nav className="w-full" id="mobile-menu">
+        <nav className="w-full" id="mobile-menu" class="mobile-menu md:hidden">
           <ul className="text-right px-6">
             {NAV_LINKS.map((link) => (
-              <li key={link.name} className="border-b py-2">
+              <li
+                key={link.name}
+                className="border-b py-2 active:scale-105 active:font-medium active:border-b-2"
+              >
                 <a href={link.href} className="block">
                   {link.name}
                 </a>
