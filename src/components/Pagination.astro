@@ -1,27 +1,62 @@
 ---
 import { Icon } from "astro-icon/components";
+import { cn } from "@/lib/utils";
 
-const { prevUrl, nextUrl } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const { prevUrl, nextUrl, currentPage, totalPages } = Astro.props;
+
+const isPrevDisabled = !prevUrl;
+const isNextDisabled = !nextUrl;
+
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+console.log("Pagination Props:", {
+  prevUrl,
+  nextUrl,
+  currentPage,
+  totalPages,
+  isPrevDisabled,
+  isNextDisabled,
+});
+
+function getPageUrl(page: number) {
+  return page === 1 ? "/" : `/page/${page}`;
+}
 ---
 
 <nav
   aria-label="Pagination"
-  class="flex justify-center items-center gap-4 text-lg"
+  class="flex mx-auto justify-center items-center gap-4 mt-4 text-xs"
 >
-  {
-    prevUrl && (
-      <a href={`${prevUrl}`} class="text-left block">
-        <Icon name="chevron-left" class:list="inline-block mr-2" />
-      </a>
-    )
-  }
+  <a
+    href={isPrevDisabled ? "#" : `${prevUrl}`}
+    aria-disabled={isPrevDisabled}
+    class={cn(
+      "flex items-center gap-2 hover:text-secondary-text text-primary-text transition-colors duration-300 ease-in-out",
+      {
+        "cursor-default opacity-50": isPrevDisabled,
+        "cursor-pointer": !isPrevDisabled,
+      }
+    )}
+  >
+    <Icon name="chevron-left" class:list="inline-block" />
+    <span class="hidden sm:inline">Previous</span>
+  </a>
 
-  {
-    nextUrl && (
-      <a href={`${nextUrl}`} class="text-right block">
-        <Icon name="chevron-right" class:list="inline-block mr-2" />
-      </a>
-    )
-  }
+  <!-- <span class="text-primary-text font-medium tabular-nums">
+    Page {currentPage}{totalPages ? ` of ${totalPages}` : ""}
+  </span> -->
+
+  <a
+    href={isNextDisabled ? "#" : `${nextUrl}`}
+    aria-disabled={isNextDisabled}
+    class={cn(
+      "flex items-center gap-2 hover:text-secondary-text text-primary-text transition-colors duration-300 ease-in-out",
+      {
+        "cursor-default opacity-50": isNextDisabled,
+        "cursor-pointer": !isNextDisabled,
+      }
+    )}
+  >
+    <span class="hidden sm:inline">Next</span>
+    <Icon name="chevron-right" class:list="inline-block" />
+  </a>
 </nav>
