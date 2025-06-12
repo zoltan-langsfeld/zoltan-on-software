@@ -1,9 +1,13 @@
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: [
+    './src/**/*.{astro,html,js,ts,jsx,tsx,md,mdx}', // adjust to your actual structure
+  ],
+  safelist: ['prose', 'prose-newDefault'], // IMPORTANT: this ensures they aren't purged
   theme: {
     extend: {
-      typography: () => ({
-        zoltan: {
+      typography: {
+        newDefault: {
           css: {
             '--tw-prose-body': 'var(--primary-text)',
             '--tw-prose-headings': 'var(--primary-text)',
@@ -33,13 +37,14 @@ module.exports = {
             '--tw-prose-invert-quote-borders': 'var(--foreground)',
             '--tw-prose-invert-captions': 'var(--background)',
             '--tw-prose-invert-code': 'var(--accent)',
-            '--tw-prose-invert-pre-code': 'var(#ffeb3b)',
+            '--tw-prose-invert-pre-code': '#ffeb3b',
             '--tw-prose-invert-pre-bg': '#1e1e1e',
             '--tw-prose-invert-th-borders': 'var(--foreground)',
             '--tw-prose-invert-td-borders': 'var(--foreground)',
           },
         },
-      }),
+      },
     },
   },
-}
+  plugins: [require('@tailwindcss/typography')],
+};

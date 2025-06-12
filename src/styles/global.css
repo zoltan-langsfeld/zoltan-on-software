@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@config "tailwind.config.ts";
+@config "tailwind.config.js";
 
 @theme {
   --font-sans:
@@ -43,7 +43,7 @@
   --background: oklch(0.18 0.0617 247.76);
   --foreground: oklch(0.32 0.0691 247.76);
 
-  --primary-text: oklch(0.94 0.0496 99.56);
+  --primary-text: oklch(0.97 0.0496 99.56);
   --secondary-text: oklch(0.99 0 130);
   --links: oklch(0.86 0.5776 258.35);
   --accent: oklch(0.68 0.1776 99.53);
