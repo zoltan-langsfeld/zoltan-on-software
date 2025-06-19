@@ -5,7 +5,9 @@
 @theme {
   --font-sans:
     "Montserrat", system-ui, -apple-system, sans-serif; /* Body Text, General */
-  --font-sans-alt: "Arial", sans-serif; /* Alternative Body Text */
+  --font-sans-alt:
+    "Segoe UI", "Helvetica Neue", "Liberation Sans", "Nimbus Sans", "Arial",
+    sans-serif; /* Alternative Body Text */
   --font-display:
     "Syne", "Helvetica Neue", "Arial", sans-serif; /* Headings, Titles */
   --font-mono:

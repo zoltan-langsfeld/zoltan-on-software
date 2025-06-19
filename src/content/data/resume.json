@@ -10,7 +10,6 @@
           "team": "Team Offer Page",
           "startDate": "Apr. 2023",
           "endDate": "Present",
-          "duration": "2 years 3 months",
           "skills": ["React.js", "TypeScript", "Amazon Web Services (AWS)"]
         },
         {
@@ -18,7 +17,6 @@
           "team": "Team Product Page",
           "startDate": "Aug. 2019",
           "endDate": "Apr. 2023",
-          "duration": "3 years 9 months",
           "description": [
             "Improved GraphQL API response times by 15%, leading to a better user experience under high traffic.",
             "Led the first phase of our new data product's architectural design.",

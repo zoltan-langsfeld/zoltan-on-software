@@ -32,17 +32,18 @@ export type ExperienceEntry = {
     startDate: ISODateString;
     endDate: ISODateString;
     description?: string[];
-    skills: string[];
+    skills?: string[];
   }[];
 };
 
 export type EducationEntry = {
   institution: string;
+  location: string;
   subject: string;
-  location?: string;
   degree?: string;
   startDate: ISODateString;
   endDate: ISODateString;
+  grade?: string;
   thesis?: string;
   courses?: string[];
   note?: string;

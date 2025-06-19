@@ -23,8 +23,7 @@ const currentPath = Astro.url.pathname.replace(base, "");
               class={cn(
                 "block border-b-[0.5px] border-primary-text hover:border-b-1",
                 {
-                  "border-b-1 border-secondary-text text-secondary-text font-normal":
-                    isActive,
+                  "text-left": isActive,
                   "text-primary-text": !isActive,
                 }
               )}
@@ -43,7 +42,7 @@ const currentPath = Astro.url.pathname.replace(base, "");
       {
         SOCIAL_LINKS.map((link) => (
           <a href={link.href} target="_blank" class="h-8">
-            <Icon name={link.label} class="md:text-2xl" />
+            <Icon name={link.label} class="icon-item md:text-2xl" />
           </a>
         ))
       }

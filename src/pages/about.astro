@@ -1,48 +1,50 @@
 ---
 import Layout from "@/layouts/Baselayout.astro";
 
-import resume from "@/content/data/resume.json";
+import data from "@/content/data/resume.json";
 import type { Resume } from "@/types.ts";
+import { Icon } from "astro-icon/components";
+
+const resume: Resume = data;
 ---
 
 <Layout title="About">
   <h1 class="text-right mb-4">about</h1>
-  <article class="p-6 bg-highligh border-[0.2px] rounded-xl">
-    <p class="font-mono mb-6">{resume.summary}</p>
+  <article class="p-6 bg-highligh border-[0.2px] rounded-xl space-y-2">
+    <p class="font-mono">{resume.summary}</p>
 
-    <h3 class="text-xl font-semibold mb-2 tracking-widest">Experience</h3>
+    <h3 class="font-semibold text-xl tracking-widest pt-4">Experience</h3>
     <ul class="space-y-4">
       {
         resume.experience.map((job) => (
           <li class="border-l-2 border-links pl-4">
             <h4 class="text-lg font-normal">{job.company}</h4>
-            {job.positions &&
-              job.positions.map((pos) => (
-                <div class="ml-2">
-                  <div class="text-sm">
-                    {pos.title} · {pos.startDate} – {pos.endDate}
-                  </div>
-                  {pos.description && (
-                    <ul class="list-disc list-inside text-gray-700 mt-1">
-                      {pos.description.map((a) => (
-                        <li>{a}</li>
-                      ))}
-                    </ul>
-                  )}
+            {job.positions.map((pos) => (
+              <div class="ml-2">
+                <div class="text-sm">
+                  {pos.title} · {pos.startDate} – {pos.endDate}
                 </div>
-              ))}
+                {pos.description && (
+                  <ul class="list-disc list-inside mt-1">
+                    {pos.description.map((a) => (
+                      <li>{a}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
           </li>
         ))
       }
     </ul>
 
-    <h3 class="text-xl font-semibold mb-2 tracking-widest">Education</h3>
+    <h3 class="font-semibold text-xl tracking-widest pt-4">Education</h3>
     <ul class="space-y-4">
       {
         resume.education.map((institution) => (
-          <li class="border-l-4 border-accent pl-4">
+          <li class="border-l-2 border-accent pl-4">
             <h4 class="text-lg font-semibold">{institution.institution}</h4>
-            <div class="text-sm text-gray-600">
+            <div class="text-sm">
               {institution.location} · {institution.subject} ·{" "}
               {institution.startDate} – {institution.endDate}
             </div>
@@ -53,12 +55,57 @@ import type { Resume } from "@/types.ts";
               <em>{institution.thesis}</em>
             </div>
             <div>
-              <ul class="list-disc list-inside text-gray-700 mt-1">
+              <ul class="list-disc list-inside mt-1">
                 {institution.courses?.map((a) => (
                   <li>{a}</li>
                 ))}
               </ul>
             </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3 class="font-semibold text-xl tracking-widest pt-4">Certifications</h3>
+    <ul class="space-y-4">
+      {
+        resume.certifications.map((cert) => (
+          <li class="border-l-2 border-links pl-4">
+            <h4 class="text-lg font-semibold">{cert.name}</h4>
+            <div class="text-sm">
+              {cert.issuer} · {cert.date} – {cert.validUntil}
+            </div>
+            <div class="h-6">
+              <a
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xl hover:text-2xl flex items-center"
+              >
+                <span>
+                  <Icon name="chevron-right" />
+                </span>
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3 class="font-semibold text-xl tracking-widest pt-4">Volunteering</h3>
+    <ul class="space-y-4">
+      {
+        resume.volunteering.map((vol) => (
+          <li class="border-l-2 border-links pl-4">
+            <h4 class="text-lg font-semibold">{vol.organization}</h4>
+            <div class="text-sm">
+              {vol.position} · {vol.startDate} – {vol.endDate}
+            </div>
+            {vol.description && (
+              <div class="mt-1">
+                <p>{vol.description}</p>
+              </div>
+            )}
           </li>
         ))
       }

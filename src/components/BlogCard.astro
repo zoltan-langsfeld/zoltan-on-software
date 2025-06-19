@@ -10,7 +10,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <li
-  class="hover:bg-blue-900/15 rounded-xl border-[0.2px] hover:border-secondary-text p-4 transition-colors duration-300 ease-in-out"
+  class="rounded-xl bg-highligh border-[0.2px] hover:bg-blue-900/15 hover:border-secondary-text p-4 transition-colors duration-300 ease-in-out"
 >
   <a
     href={`${base}/${entry.collection}/${entry.id}`}
@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
         </div>
       )
     }
-    <div class="text-left hover:text-secondary-text">
+    <div class="text-left hover:text-hover">
       <div class="container justify-center gap-2 text-xs font-mono">
         <em>{formattedDate}</em>
         <em class="text-gray-500">|</em>
