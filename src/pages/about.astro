@@ -1,18 +1,67 @@
 ---
 import Layout from "@/layouts/Baselayout.astro";
+
+import resume from "@/content/data/resume.json";
+import type { Resume } from "@/types.ts";
 ---
 
 <Layout title="About">
   <h1 class="text-right mb-4">about</h1>
-  <p class="text-right">
-    I am a software engineer with over eight years of experience and a proven
-    ability to quickly adapt to various technology stacks. I have played a key
-    role on two product teams at idealo for the past five years. Although I have
-    the most experience in back-end and infrastructure development, I've been
-    exposed to front-end development in the past two years. A vital aspect of my
-    work is helping the business thrive. Before diving into the code, I always
-    aim to understand the product and the customer. I lead and work by applying
-    principles of extreme ownership. If you want to find more about me, feel
-    free to check out my profiles below.
-  </p>
+  <article class="p-6 bg-highligh border-[0.2px] rounded-xl">
+    <p class="font-mono mb-6">{resume.summary}</p>
+
+    <h3 class="text-xl font-semibold mb-2 tracking-widest">Experience</h3>
+    <ul class="space-y-4">
+      {
+        resume.experience.map((job) => (
+          <li class="border-l-2 border-links pl-4">
+            <h4 class="text-lg font-normal">{job.company}</h4>
+            {job.positions &&
+              job.positions.map((pos) => (
+                <div class="ml-2">
+                  <div class="text-sm">
+                    {pos.title} · {pos.startDate} – {pos.endDate}
+                  </div>
+                  {pos.description && (
+                    <ul class="list-disc list-inside text-gray-700 mt-1">
+                      {pos.description.map((a) => (
+                        <li>{a}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+          </li>
+        ))
+      }
+    </ul>
+
+    <h3 class="text-xl font-semibold mb-2 tracking-widest">Education</h3>
+    <ul class="space-y-4">
+      {
+        resume.education.map((institution) => (
+          <li class="border-l-4 border-accent pl-4">
+            <h4 class="text-lg font-semibold">{institution.institution}</h4>
+            <div class="text-sm text-gray-600">
+              {institution.location} · {institution.subject} ·{" "}
+              {institution.startDate} – {institution.endDate}
+            </div>
+            <div>
+              {institution.degree && <span>{institution.degree}</span>}
+              {institution.degree && institution.grade && " - "}
+              {institution.grade && <span>{institution.grade}</span>}
+              <em>{institution.thesis}</em>
+            </div>
+            <div>
+              <ul class="list-disc list-inside text-gray-700 mt-1">
+                {institution.courses?.map((a) => (
+                  <li>{a}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
 </Layout>
