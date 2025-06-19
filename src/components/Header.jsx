@@ -48,7 +48,7 @@ const Header = () => {
 
         {/* toggle for dark and light mode */}
         <div className="md:basis-1/3 flex justify-end">
-          <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-secondary-text" />
+          <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary-text" />
         </div>
       </div>
 
