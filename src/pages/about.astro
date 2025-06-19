@@ -75,18 +75,14 @@ const resume: Resume = data;
             <div class="text-sm">
               {cert.issuer} · {cert.date} – {cert.validUntil}
             </div>
-            <div class="h-6">
-              <a
-                href={cert.credentialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-xl hover:text-2xl flex items-center"
-              >
-                <span>
-                  <Icon name="chevron-right" />
-                </span>
-              </a>
-            </div>
+            <a
+              href={cert.credentialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm items-center rounded-4xl py-1 px-7 inline-flex border-[0.2px] hover:text-secondary-text hover:bg-blue-900/15 hover:border-secondary-text transition-colors duration-300 ease-in-out mt-4"
+            >
+              <span>Show Certificate</span>
+            </a>
           </li>
         ))
       }
