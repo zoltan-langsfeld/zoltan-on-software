@@ -32,15 +32,15 @@ const Header = () => {
             className="flex flex-col justify-between md:hidden w-4 h-4 focus-visible:ring-2 focus-visible:ring-accent"
           >
             <span
-              className={`h-0.5 w-4 bg-secondary-text origin-center transition-all duration-200 ease-in-out
+              className={`h-0.5 w-4 bg-primary-text origin-center transition-all duration-200 ease-in-out
                 ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`}
             />
             <span
-              className={`h-0.5 w-4 bg-secondary-text origin-center transition-all duration-200 ease-in-out
+              className={`h-0.5 w-4 bg-primary-text origin-center transition-all duration-200 ease-in-out
                 ${isOpen ? "opacity-0" : "opacity-100"}`}
             />
             <span
-              className={`h-0.5 w-4 bg-secondary-text origin-center transition-all duration-200 ease-in-out
+              className={`h-0.5 w-4 bg-primary-text origin-center transition-all duration-200 ease-in-out
                 ${isOpen ? "-rotate-45 -translate-y-[7px]" : ""}`}
             />
           </button>
