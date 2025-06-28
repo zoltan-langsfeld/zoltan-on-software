@@ -45,7 +45,7 @@
   --background: oklch(0.18 0.0617 247.76);
   --highlight: oklch(0.26 0.04 247.76);
 
-  --primary-text: oklch(0.99 0.04 99.56);
+  --primary-text: oklch(0.986 0.0296 99.5);
   --hover-text: oklch(0.99 0 130);
   --links: oklch(0.66 0.5776 258.35);
   --accent: oklch(0.78 0.1776 99.53);
