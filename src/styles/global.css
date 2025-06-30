@@ -16,7 +16,7 @@
   --color-background: var(--background);
   --color-highlight: var(--highlight);
   --color-primary-text: var(--primary-text);
-  --color-secondary-text: var(--secondary-text);
+  --color-hover-text: var(--hover-text);
   --color-accent: var(--accent);
   --color-links: var(--links);
 }
@@ -45,8 +45,8 @@
   --background: oklch(0.18 0.0617 247.76);
   --highlight: oklch(0.26 0.04 247.76);
 
-  --primary-text: oklch(0.986 0.0296 99.5);
-  --hover-text: oklch(0.99 0 130);
+  --primary-text: oklch(0.996 0.0300 99.5);
+  --hover-text: oklch(0.9735 0.0148 221.29);
   --links: oklch(0.66 0.5776 258.35);
   --accent: oklch(0.78 0.1776 99.53);
 }
