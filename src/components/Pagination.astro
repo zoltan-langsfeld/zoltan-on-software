@@ -2,35 +2,68 @@
 import { Icon } from "astro-icon/components";
 import { cn } from "@/lib/utils";
 
-const { prevUrl, nextUrl, currentPage, totalPages } = Astro.props;
+const { prevUrl, nextUrl, currentPageUrl, current, total } = Astro.props;
 
 const isPrevDisabled = !prevUrl;
 const isNextDisabled = !nextUrl;
 
-const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-console.log("Pagination Props:", {
-  prevUrl,
-  nextUrl,
-  currentPage,
-  totalPages,
-  isPrevDisabled,
-  isNextDisabled,
-});
-
 function getPageUrl(page: number) {
-  return page === 1 ? "/" : `/page/${page}`;
+  return page === 1 ? "" : `/${page}`;
 }
+
+function getVisiblePages(current: number, total: number) {
+  const visiblePages: (number | null)[] = [];
+
+  const ArrayOfPageNumbers = Array.from({ length: total }, (_, i) => i + 1);
+
+  if (total <= 5) {
+    return ArrayOfPageNumbers;
+  }
+
+  for (let i = 1; i <= total; i++) {
+    if (
+      i === 1 ||
+      i === total ||
+      i === current - 1 ||
+      i === current + 1 ||
+      i === current
+    ) {
+      visiblePages.push(i);
+    } else {
+      visiblePages.push(null);
+    }
+  }
+
+  const result: (number | "...")[] = [];
+  let lastWasNull = false;
+  for (let page of visiblePages) {
+    if (page === null) {
+      if (!lastWasNull) {
+        result.push("...");
+        lastWasNull = true;
+      } else {
+        continue; // Skip consecutive nulls
+      }
+    } else {
+      result.push(page);
+      lastWasNull = false;
+    }
+  }
+  return result;
+}
+
+console.log("visiblePages Array:", getVisiblePages(current, total));
 ---
 
 <nav
   aria-label="Pagination"
-  class="flex mx-auto justify-center items-center gap-4 mt-4 text-xs"
+  class="flex mx-auto justify-center items-center gap-1 sm:gap-4 mt-4 text-xs"
 >
   <a
     href={isPrevDisabled ? "#" : `${prevUrl}`}
     aria-disabled={isPrevDisabled}
     class={cn(
-      "flex items-center gap-2 hover:text-secondary-text text-primary-text transition-colors duration-300 ease-in-out",
+      "flex items-center gap-2 hover:text-hover text-primary-text transition-colors duration-300 ease-in-out",
       {
         "cursor-default opacity-50": isPrevDisabled,
         "cursor-pointer": !isPrevDisabled,
@@ -38,18 +71,42 @@ function getPageUrl(page: number) {
     )}
   >
     <Icon name="chevron-left" class:list="inline-block" />
-    <span class="hidden sm:inline">Previous</span>
+    <span class="hidden sm:inline">Back</span>
   </a>
 
-  <!-- <span class="text-primary-text font-medium tabular-nums">
-    Page {currentPage}{totalPages ? ` of ${totalPages}` : ""}
-  </span> -->
+  {
+    getVisiblePages(current, total).map((page) => {
+      if (page === "...") {
+        return <span class="px-2">...</span>;
+      }
+
+      const isActive = current === page;
+      const pageUrl = getPageUrl(page);
+
+      return (
+        <a
+          href={isActive ? `` : `/zoltan-on-software/blog${pageUrl}`}
+          aria-disabled={isActive}
+          class={cn(
+            "px-2 py-1 hover:text-hover-text transition-colors duration-300 ease-in-out rounded-md",
+            {
+              "border border-primary-text/50 font-medium hover:bg-blue-900/25":
+                isActive,
+              "hover:bg-blue-900/35 cursor-pointer": !isActive,
+            }
+          )}
+        >
+          <span class="inline">{page}</span>
+        </a>
+      );
+    })
+  }
 
   <a
     href={isNextDisabled ? "#" : `${nextUrl}`}
     aria-disabled={isNextDisabled}
     class={cn(
-      "flex items-center gap-2 hover:text-secondary-text text-primary-text transition-colors duration-300 ease-in-out",
+      "flex items-center gap-2 hover:text-hover-text transition-colors duration-300 ease-in-out",
       {
         "cursor-default opacity-50": isNextDisabled,
         "cursor-pointer": !isNextDisabled,

@@ -15,11 +15,11 @@ export async function getStaticPaths({
   paginate: PaginateFunction;
 }) {
   const posts = await getAllPosts();
-  return paginate(posts, { pageSize: SITE.postsPerPage || 4 });
+  return paginate(posts, { pageSize: 1 });
 }
 
 const { page } = Astro.props;
-console.log("Page URL:", page.url);
+console
 ---
 
 <Layout title="Blog">
@@ -42,8 +42,9 @@ console.log("Page URL:", page.url);
     <Pagination
       prevUrl={page.url.prev}
       nextUrl={page.url.next}
-      currentPage={page.url.current}
-      totalPages={page.url.last}
+      currentPageUrl={page.url.current}
+      current={page.currentPage}
+      total={page.lastPage}
     />
   </div>
 </Layout>
