@@ -43,7 +43,7 @@
 
 :root {
   --background: oklch(0.18 0.0617 247.76);
-  --highlight: oklch(0.26 0.04 247.76);
+  --highlight: oklch(0.56 0.09 247.76);
 
   --primary-text: oklch(0.996 0.0300 99.5);
   --hover-text: oklch(0.9735 0.0148 221.29);
