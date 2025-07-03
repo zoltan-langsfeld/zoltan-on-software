@@ -9,102 +9,156 @@ const resume: Resume = data;
 ---
 
 <Layout title="About">
-  <h1 class="text-right mb-4">about</h1>
-  <article class="p-6 bg-highligh border-[0.2px] rounded-xl space-y-2">
+  <h1 class="text-right mb-4 font-display">about</h1>
+  <article class="p-6 border-[0.2px] rounded-xl space-y-14">
     <p class="font-mono">{resume.summary}</p>
 
-    <h3 class="font-semibold text-xl tracking-widest pt-4">Experience</h3>
-    <ul class="space-y-4">
-      {
-        resume.experience.map((job) => (
-          <li class="border-l-2 border-links pl-4">
-            <h4 class="text-lg font-normal">{job.company}</h4>
-            {job.positions.map((pos) => (
-              <div class="ml-2">
-                <div class="text-sm">
-                  {pos.title} · {pos.startDate} – {pos.endDate}
+    <!-- Experience -->
+    <div class="space-y-4">
+      <h3 class="font-semibold tracking-widest uppercase">Experience</h3>
+      <ul>
+        {
+          resume.experience.map((job) => (
+            <li class="mt-8">
+              <div class="flex justify-between items-baseline mb-3">
+                <h4 class="font-semibold text-medium">{job.company}</h4>
+                <small>{job.location}</small>
+              </div>
+
+              <li class="relative pl-6 border-l-2 border-links space-y-6">
+                <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+                {job.positions.map((pos) => (
+                  <div class="space-y-4">
+                    <div class="text-sm">
+                      <span class="font-medium block">
+                        {pos.title} - {pos.team}
+                      </span>
+                      <span>
+                        {pos.startDate} – {pos.endDate}
+                      </span>
+                    </div>
+                    {pos.description && (
+                      <ul class="list-disc list-inside">
+                        {pos.description.map((a) => (
+                          <li>{a}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {pos.skills && (
+                      <ul
+                        class="flex flex-wrap gap-3"
+                        aria-label="Technologies used"
+                      >
+                        {pos.skills.map((skill) => (
+                          <li class="">
+                            <div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
+                              {skill}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </li>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Education -->
+    <div class="space-y-4">
+      <h3 class="font-semibold tracking-widest uppercase">Education</h3>
+      <ul class="space-y-6">
+        {
+          resume.education.map((institution) => (
+            <li class="relative pl-6 border-l-2 border-links space-y-3">
+              <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+              <div class="text-sm">
+                <h4 class="text-base font-semibold">
+                  {institution.institution}
+                </h4>
+                <div class="text-xs text-muted">
+                  {institution.location} · {institution.subject} ·{" "}
+                  {institution.startDate} – {institution.endDate}
                 </div>
-                {pos.description && (
-                  <ul class="list-disc list-inside mt-1">
-                    {pos.description.map((a) => (
-                      <li>{a}</li>
-                    ))}
-                  </ul>
+              </div>
+
+              <div class="text-sm">
+                {institution.degree && <span>{institution.degree}</span>}
+                {institution.degree && institution.grade && " - "}
+                {institution.grade && <span>{institution.grade}</span>}
+                {institution.thesis && (
+                  <div>
+                    <em>{institution.thesis}</em>
+                  </div>
                 )}
               </div>
-            ))}
-          </li>
-        ))
-      }
-    </ul>
 
-    <h3 class="font-semibold text-xl tracking-widest pt-4">Education</h3>
-    <ul class="space-y-4">
-      {
-        resume.education.map((institution) => (
-          <li class="border-l-2 border-accent pl-4">
-            <h4 class="text-lg font-semibold">{institution.institution}</h4>
-            <div class="text-sm">
-              {institution.location} · {institution.subject} ·{" "}
-              {institution.startDate} – {institution.endDate}
-            </div>
-            <div>
-              {institution.degree && <span>{institution.degree}</span>}
-              {institution.degree && institution.grade && " - "}
-              {institution.grade && <span>{institution.grade}</span>}
-              <em>{institution.thesis}</em>
-            </div>
-            <div>
-              <ul class="list-disc list-inside mt-1">
-                {institution.courses?.map((a) => (
-                  <li>{a}</li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+              {institution.courses && (
+                <ul
+                  class="mt-2 flex flex-wrap gap-2 text-xs"
+                  aria-label="Courses"
+                >
+                  {institution.courses.map((course) => (
+                    <li class="">
+                      <div class="flex items-center rounded-full bg-blue-400/10 px-3 py-1 font-medium">
+                        {course}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
 
-    <h3 class="font-semibold text-xl tracking-widest pt-4">Certifications</h3>
-    <ul class="space-y-4">
-      {
-        resume.certifications.map((cert) => (
-          <li class="border-l-2 border-links pl-4">
-            <h4 class="text-lg font-semibold">{cert.name}</h4>
-            <div class="text-sm">
-              {cert.issuer} · {cert.date} – {cert.validUntil}
-            </div>
-            <a
-              href={cert.credentialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-sm items-center rounded-4xl py-1 px-7 inline-flex border-[0.2px] hover:text-secondary-text hover:bg-blue-900/15 hover:border-secondary-text transition-colors duration-300 ease-in-out mt-4"
-            >
-              <span>Show Certificate</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-
-    <h3 class="font-semibold text-xl tracking-widest pt-4">Volunteering</h3>
-    <ul class="space-y-4">
-      {
-        resume.volunteering.map((vol) => (
-          <li class="border-l-2 border-links pl-4">
-            <h4 class="text-lg font-semibold">{vol.organization}</h4>
-            <div class="text-sm">
-              {vol.position} · {vol.startDate} – {vol.endDate}
-            </div>
-            {vol.description && (
-              <div class="mt-1">
-                <p>{vol.description}</p>
+    <!-- Certifications -->
+    <div class="space-y-4">
+      <h3 class="font-semibold tracking-widest uppercase">Certifications</h3>
+      <ul class="space-y-6">
+        {
+          resume.certifications.map((cert) => (
+            <li class="relative pl-6 border-l-2 border-links space-y-2">
+              <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+              <h4 class="text-base font-semibold">{cert.name}</h4>
+              <div class="text-xs text-muted">
+                {cert.issuer} · {cert.date} – {cert.validUntil}
               </div>
-            )}
-          </li>
-        ))
-      }
-    </ul>
+              <a
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 hover:text-secondary-text hover:bg-links/95 hover:border-secondary-text transition-colors duration-300 ease-in-out"
+              >
+                Show Certificate
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Volunteering -->
+    <div class="space-y-4">
+      <h3 class="font-semibold tracking-widest uppercase">Volunteering</h3>
+      <ul class="space-y-6">
+        {
+          resume.volunteering.map((vol) => (
+            <li class="relative pl-6 border-l-2 border-links space-y-2">
+              <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+              <h4 class="text-base font-semibold">{vol.organization}</h4>
+              <div class="text-xs text-muted">
+                {vol.position} · {vol.startDate} – {vol.endDate}
+              </div>
+              {vol.description && <p class="text-sm mt-1">{vol.description}</p>}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </article>
 </Layout>
