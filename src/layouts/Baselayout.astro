@@ -4,44 +4,47 @@ import Sidebar from "@/components/Sidebar.astro";
 import Footer from "@/components/Footer.astro";
 
 import "@/styles/global.css";
+import { ClientRouter, fade } from "astro:transitions";
 
 const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
+  <head transition:name="root" transition:animate="none">
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/zoltan-on-software/z-logo.svg"
+    rel="icon"
+    type="image/svg+xml"
+    href="/zoltan-on-software/z-logo.svg"
     />
     <link
-      rel="preload"
-      href="/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin="anonymous"
+    rel="preload"
+    href="/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin="anonymous"
     />
     <link
-      rel="preload"
-      href="/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin="anonymous"
+    rel="preload"
+    href="/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin="anonymous"
     />
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter fallback="none"/>
     <title>{title}</title>
   </head>
   <body>
     <div
       class="flex h-fit min-h-screen flex-col gap-y-6 md:gap-y-12 sm:px-4 relative"
     >
-      <Header client:load />
-      <main
+      <Header client:load transition:persist/>
+      <main transition:animate={fade({ duration: "0.4s" })}
         class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14"
       >
         <!-- Main Content Column -->
@@ -50,7 +53,7 @@ const { title } = Astro.props;
         </div>
 
         <!-- Sidebar -->
-        <Sidebar class="hidden md:block" />
+        <Sidebar class="hidden md:block" transition:persist transition:name="sidebar" currentPath={currentPath}/>
       </main>
       <Footer />
     </div>
@@ -61,7 +64,7 @@ const { title } = Astro.props;
       style={{
         opacity: "var(--opacity, 0)",
         background:
-          "radial-gradient(25rem 25rem at var(--x) var(--y), oklch(0.56 0.09 247.76 / 0.5) 0%, transparent 90%)",
+          "radial-gradient(35rem 35rem at var(--x) var(--y), oklch(0.56 0.09 247.76 / 0.14) 0%, transparent 90%)",
           mixBlendMode: "lighten", // optional, experiment with modes
         }}
     >
@@ -75,7 +78,6 @@ const { title } = Astro.props;
         bodyTwin?.style.setProperty('--x', `${x}px`);
         bodyTwin?.style.setProperty('--y', `${y}px`);
         bodyTwin?.style.setProperty('--opacity', '1');
-    
       })
     </script>
 </html>
