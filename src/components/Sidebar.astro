@@ -3,31 +3,32 @@ import { Icon } from "astro-icon/components";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/consts";
 import { cn } from "@/lib/utils";
 
+const { currentPath } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const currentPath = Astro.url.pathname.replace(base, "");
+const path = currentPath.replace(base, "");
+console.log("Current Path:", currentPath, "Base URL:", base, "Path:", path);
 ---
 
-<sidebar class="mt-2 sidebar" aria-label="Sidebar with Navigation">
+<sidebar
+  class="mt-2 sidebar"
+  aria-label="Sidebar with Navigation"
+  transition:persist
+  transition:name="sidebar"
+>
   <nav
     class="nav flex-col gap-y-1 grow mb-4 hidden md:flex"
     aria-label="Main Navigation"
   >
     {
       NAV_LINKS.map((link) => {
-        let isActive = currentPath === link.href;
-        console.log("isActive:", isActive, "Link:", link.href);
         return (
           <div class="h-8 items-end w-full text-right">
             <a
               href={`${import.meta.env.BASE_URL}${link.href}`}
               class={cn(
                 "block border-b-[0.5px] border-primary-text hover:border-b-1",
-                {
-                  "text-left": isActive,
-                  "text-primary-text": !isActive,
-                }
+            
               )}
-              aria-current={isActive ? "page" : undefined}
             >
               {link.label}
             </a>

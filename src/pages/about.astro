@@ -10,11 +10,11 @@ const resume: Resume = data;
 
 <Layout title="About">
   <h1 class="text-right mb-4 font-display">about</h1>
-  <article class="p-6 border-[0.2px] rounded-xl space-y-14">
-    <p class="font-mono">{resume.summary}</p>
+  <article class="border-[0.2px rounded-xl space-y-18">
+    <p class="text-right font-light">{resume.summary}</p>
 
     <!-- Experience -->
-    <div class="space-y-4">
+    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Experience</h3>
       <ul>
         {
@@ -25,8 +25,8 @@ const resume: Resume = data;
                 <small>{job.location}</small>
               </div>
 
-              <li class="relative pl-6 border-l-2 border-links space-y-6">
-                <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+              <li class="space-y-8 pl-4">
+
                 {job.positions.map((pos) => (
                   <div class="space-y-4">
                     <div class="text-sm">
@@ -68,13 +68,12 @@ const resume: Resume = data;
     </div>
 
     <!-- Education -->
-    <div class="space-y-4">
+    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Education</h3>
       <ul class="space-y-6">
         {
           resume.education.map((institution) => (
-            <li class="relative pl-6 border-l-2 border-links space-y-3">
-              <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+            <li class="space-y-3">
               <div class="text-sm">
                 <h4 class="text-base font-semibold">
                   {institution.institution}
@@ -85,7 +84,7 @@ const resume: Resume = data;
                 </div>
               </div>
 
-              <div class="text-sm">
+              <div class="text-sm  pl-4">
                 {institution.degree && <span>{institution.degree}</span>}
                 {institution.degree && institution.grade && " - "}
                 {institution.grade && <span>{institution.grade}</span>}
@@ -94,12 +93,11 @@ const resume: Resume = data;
                     <em>{institution.thesis}</em>
                   </div>
                 )}
-              </div>
 
               {institution.courses && (
                 <ul
-                  class="mt-2 flex flex-wrap gap-2 text-xs"
-                  aria-label="Courses"
+                class="mt-2 flex flex-wrap gap-2 text-xs"
+                aria-label="Courses"
                 >
                   {institution.courses.map((course) => (
                     <li class="">
@@ -110,6 +108,8 @@ const resume: Resume = data;
                   ))}
                 </ul>
               )}
+              </div>
+              
             </li>
           ))
         }
@@ -117,13 +117,12 @@ const resume: Resume = data;
     </div>
 
     <!-- Certifications -->
-    <div class="space-y-4">
+    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Certifications</h3>
       <ul class="space-y-6">
         {
           resume.certifications.map((cert) => (
-            <li class="relative pl-6 border-l-2 border-links space-y-2">
-              <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+            <li class="space-y-2">
               <h4 class="text-base font-semibold">{cert.name}</h4>
               <div class="text-xs text-muted">
                 {cert.issuer} · {cert.date} – {cert.validUntil}
@@ -143,13 +142,12 @@ const resume: Resume = data;
     </div>
 
     <!-- Volunteering -->
-    <div class="space-y-4">
+    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Volunteering</h3>
       <ul class="space-y-6">
         {
           resume.volunteering.map((vol) => (
-            <li class="relative pl-6 border-l-2 border-links space-y-2">
-              <span class="absolute left-[-5px] top-[0px] w-2 h-2 bg-links rounded-full" />
+            <li class="space-y-2">
               <h4 class="text-base font-semibold">{vol.organization}</h4>
               <div class="text-xs text-muted">
                 {vol.position} · {vol.startDate} – {vol.endDate}
