@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { name: "home", href: import.meta.env.BASE_URL },
@@ -47,14 +48,12 @@ const Header = () => {
         </div>
 
         {/* toggle for dark and light mode */}
-        <div className="md:basis-1/3 flex justify-end">
-          <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary-text" />
-        </div>
+        <ThemeToggle />
       </div>
 
       {/* Dropdown menu */}
       {isOpen && (
-        <nav className="w-full" id="mobile-menu" class="mobile-menu md:hidden">
+        <nav className="w-full mobile-menu md:hidden" id="mobile-menu">
           <ul className="text-right px-6">
             {NAV_LINKS.map((link) => (
               <li
