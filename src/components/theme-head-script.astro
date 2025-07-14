@@ -1,0 +1,19 @@
+<script is:inline>
+  function applyTheme() {
+    const stored = localStorage.getItem('theme');
+
+    const shouldUseDark =
+      stored === 'dark' ||
+      (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    if (shouldUseDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  applyTheme();
+
+  document.addEventListener('astro:after-swap', applyTheme);
+</script>

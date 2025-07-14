@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar.astro";
 import Footer from "@/components/Footer.astro";
+import ThemeHeadScript from "@/components/theme-head-script.astro";
 
 import "@/styles/global.css";
 import { ClientRouter, fade } from "astro:transitions";
@@ -36,8 +37,9 @@ const currentPath = Astro.url.pathname;
     crossorigin="anonymous"
     />
     <meta name="generator" content={Astro.generator} />
-    <ClientRouter fallback="none"/>
     <title>{title}</title>
+    <ClientRouter fallback="none"/>
+   <ThemeHeadScript />
   </head>
   <body>
     <div
@@ -48,7 +50,7 @@ const currentPath = Astro.url.pathname;
         class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14"
       >
         <!-- Main Content Column -->
-        <div class="flex min-w-0 grow flex-col gap-y-1">
+        <div class="flex min-w-0 grow flex-col gap-y-1 items-end">
           <slot />
         </div>
 
@@ -60,13 +62,7 @@ const currentPath = Astro.url.pathname;
   
   </body>
   <div
-      class="body-twin fixed pointer-events-none inset-0 z-[-10]"
-      style={{
-        opacity: "var(--opacity, 0)",
-        background:
-          "radial-gradient(35rem 35rem at var(--x) var(--y), oklch(0.56 0.09 247.76 / 0.14) 0%, transparent 90%)",
-          mixBlendMode: "lighten", // optional, experiment with modes
-        }}
+      class="body-twin fixed pointer-events-none inset-0 z-[10] mix-blend-screen dark:mix-blend-lighten spotlight-effect"
     >
     </div>
     <script>
