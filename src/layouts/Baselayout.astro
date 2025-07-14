@@ -55,7 +55,7 @@ const currentPath = Astro.url.pathname;
         </div>
 
         <!-- Sidebar -->
-        <Sidebar client:load transition:persist transition:name="sidebar" currentPath={currentPath}/>
+        <Sidebar transition:persist transition:name="sidebar" currentPath={currentPath}/>
       </main>
       <Footer />
     </div>
