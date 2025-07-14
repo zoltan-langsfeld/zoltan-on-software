@@ -2,87 +2,36 @@
 @plugin "@tailwindcss/typography";
 @config "tailwind.config.js";
 
-@theme {
-  --font-sans:
-    "Montserrat", system-ui, -apple-system, sans-serif; /* Body Text, General */
-  --font-sans-alt:
-    "Segoe UI", "Helvetica Neue", "Liberation Sans", "Nimbus Sans", "Arial",
-    sans-serif; /* Alternative Body Text */
-  --font-display:
-    "Syne", "Helvetica Neue", "Arial", sans-serif; /* Headings, Titles */
-  --font-mono:
-    "Courier New", "SFMono-Regular", monospace; /* Code, Monospace Text */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-background: var(--background);
-  --color-highlight: var(--highlight);
-  --color-primary-text: var(--primary-text);
-  --color-hover-text: var(--hover-text);
-  --color-accent: var(--accent);
-  --color-links: var(--links);
-}
-
-@font-face {
-  font-family: "Syne";
-  src: url("/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf")
-    format("truetype");
-  font-optical-sizing: auto;
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf")
-    format("truetype");
-  font-optical-sizing: auto;
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  --background: oklch(0.18 0.0617 247.76);
-  --highlight: oklch(0.56 0.09 247.76);
-
-  --primary-text: oklch(0.996 0.0300 99.5);
-  --hover-text: oklch(0.9735 0.0148 221.29);
-  --links: oklch(0.66 0.5776 258.35);
-  --accent: oklch(0.78 0.1776 99.53);
-}
-
+/* ---------------------- @layer base ---------------------- */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply font-sans text-primary-text bg-bg-body font-extralight;
+
+    &.dark {
+      @apply scheme-dark;
+    }
+  }
+
   :focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--links);
     outline-offset: 2px;
     border-radius: 2px;
   }
 
-  body {
-    font-family: var(--font-sans);
-    font-weight: 200;
-    font-synthesis: none;
-    background-color: var(--background);
-    color: var(--color-primary-text);
-    
-  }
-
   h1 {
-    @apply text-5xl;
+    @apply text-5xl text-right mb-4 font-display;
   }
+
   p {
-    @apply text-base;
+    @apply text-base tracking-widest;
   }
+}
 
-  @media (min-width: 640px) {
-    h1 {
-      @apply font-normal;
-    }
-    p {
-      @apply font-normal;
-    }
-  }
-
+/* ------------------- @layer components ------------------- */
+@layer components {
   .sidebar .nav a {
     text-transform: lowercase;
     transition:
@@ -105,9 +54,76 @@
       padding-left: 1rem;
       padding-right: 1rem;
     }
+
     .sidebar .icons a:hover {
       transform: scale(1.1);
       font-size: 1.2rem;
     }
+
+    .spotlight-effect {
+       opacity: var(--opacity, 0);
+      background: radial-gradient(35rem 35rem at var(--x) var(--y), var(--spotlight) 0%, transparent 90%);
+    }
   }
+
+}
+
+/* ---------------------- Fonts + Theme ---------------------- */
+@font-face {
+  font-family: "Syne";
+  src: url("/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf") format("truetype");
+  font-optical-sizing: auto;
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf") format("truetype");
+  font-optical-sizing: auto;
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-display: "Syne", "Helvetica Neue", Arial, sans-serif;
+  --color-bg-body: var(--bg-body);
+  --color-bg-component: var(--bg-component);
+  --color-bg-button: var(--bg-button);
+  --color-primary-text: var(--primary-text);
+  --color-hover-text: var(--hover-text);
+  --color-spotlight: var(--spotlight);
+  --color-accent: var(--accent);
+  --color-links: var(--links);
+  --color-code-bg: var(--code-bg);
+}
+
+
+:root {
+  --bg-body: oklch(0.9735 0.0148 221.29);
+  --bg-component:oklch(0.56 0.06 250 / 0.07);
+  --bg-button: oklch(0.75 0.05 260 / 0.08);
+  --primary-text: oklch(0.18 0.0617 247.76);
+  --hover-text: oklch(0.6 0.1 260);
+  --spotlight: oklch(0.4 0.1 260);
+  /* --spotlight: oklch(0.996 0.09 99.5 / 0.3); */
+
+  --links: oklch(0.74 0.12 260);
+  --accent: oklch(0.78 0.10 99.53);
+  --code-bg: oklch(0.996 0.03 99.5);
+}
+.dark {
+  --bg-body: oklch(0.18 0.0617 247.76);
+  --bg-component: oklch(0.56 0.06 250 / 0.07);
+  --bg-button: oklch(0.75 0.05 260 / 0.18);
+  --primary-text: oklch(0.996 0.03 99.5);
+  --hover-text: oklch(0.9735 0.0148 221.29);
+  --spotlight: oklch(0.4 0.1 260 / 1);
+
+  --links: oklch(0.94 .12 260);
+  --accent: oklch(0.996 0.09 99.5);
+  --code-bg: oklch(0.22 0.02 260);
 }
