@@ -20,7 +20,7 @@ const Header = () => {
         <div className="flex min-w-0 grow md:basis-2/3 items-center justify-between">
           <a
             href={`${import.meta.env.BASE_URL}`}
-            className="main-title text-secondary-text text-base md:text-2xl tracking-widest font-light md:font-thin"
+            className="main-title text-base md:text-2xl tracking-widest font-light md:font-thin"
           >
             ZOLTAN ON SOFTWARE
           </a>

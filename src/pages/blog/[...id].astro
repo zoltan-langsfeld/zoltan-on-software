@@ -22,29 +22,28 @@ if (Astro.params.id?.startsWith("page")) {
 
 const post = Astro.props;
 const currentPostId = Astro.params.id;
-console.log("Post ID:", post.id);
 const { Content, headings } = await render(post);
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} >
   {
     post.data.image && (
       <Image
         src={post.data.image}
         alt={post.data.title}
-        class="col-span-full mx-auto w-full-max-w-5xl object-cover"
+        class="col-span-full mx-auto w-full max-w-5xl object-cover rounded-xl"
         width={1200}
         height={630}
       />
     )
   }
-  <h1 class="text-center my-4">{post.data.title}</h1>
-  <div class="flex flex-wrap items-center justify-center gap-2 text-xs mb-4">
-    <span>{formatDate(post.data.pubDate)}</span>
-    <em class="text-gray-500">|</em>
-    <span>{readingTime(post.body!)}</span>
+  <div class="w-full">
+    <h1 class="text-center my-4">{post.data.title}</h1>
+    <div class="flex flex-wrap items-center justify-center gap-2 text-xs mb-4">
+      <span>{formatDate(post.data.pubDate)} | {readingTime(post.body!)}</span>
+    </div>
+    <article class="prose prose-newDefault">
+      <Content />
+    </article>
   </div>
-  <article class="prose prose-newDefault">
-    <Content />
-  </article>
 </Layout>

@@ -23,6 +23,16 @@ The primary issue was that Expressive Code doesn't support inline syntax highlig
 
 However, I needed a solution immediately. My first thought was to use both packages together—Expressive Code for block code and rehype-pretty-code for inline code. However, importing both at the same time caused everything to break spectacularly.
 
+Callout only supports three props:
+
+| Prop | Description | Default |
+| ---- | ----------- | ------- |
+| `title` | The title of the callout | `undefined{:js}` |
+| `variant` | The variant of the callout | `"note"{:js}` |
+| `defaultOpen` | Whether the callout `<details>{:html}` box is open by default | `true{:js}` |
+
+I've added an insane amount of variants to this component for potentially any use case you could think of. For the more general ones, you can use the following:
+
 ## The hunt for a solution
 
 Digging into the rehype-pretty-code docs, I noticed they had a `bypassInlineCode{:js}` option that lets you skip inline code highlighting (it was actually added in a really recent update). But what I needed was the opposite, which would be a way to make it only handle inline code and bypass blocks entirely.
@@ -49,7 +59,7 @@ After I replied that I hadn't figured out a workaround yet, they sent me a brill
 
 This happened to be exactly what I needed! I went into my `node_modules` directory and made the changes manually:
 
-```js title="node_modules⠀›⠀rehype-pretty-code⠀›⠀dist⠀›⠀index.js" startLineNumber=18 ins={9} del={8}
+```js
 function isInlineCode(element, parent, bypass = false) {
   if (bypass) {
     return false;
@@ -75,7 +85,7 @@ function isBlockCode(element) {
 
 From here, I ran `npx patch-package rehype-pretty-code`, which created a `patches/rehype-pretty-code+0.14.1.patch` file with the changes I made:
 
-```diff title="patches⠀›⠀rehype-pretty-code+0.14.1.patch"
+```diff
 --- a/node_modules/rehype-pretty-code/dist/index.js
 +++ b/node_modules/rehype-pretty-code/dist/index.js
 @@ -22,7 +22,7 @@ function isInlineCode(element, parent, bypass = false) {

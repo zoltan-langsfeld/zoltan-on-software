@@ -9,12 +9,12 @@ const resume: Resume = data;
 ---
 
 <Layout title="About">
-  <h1 class="text-right mb-4 font-display">about</h1>
-  <article class="border-[0.2px rounded-xl space-y-18">
-    <p class="text-right font-light">{resume.summary}</p>
+  <h1>about</h1>
+  <article class="space-y-18">
+    <p class="text-right">{resume.summary}</p>
 
     <!-- Experience -->
-    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
+    <div class="space-y-4 bg-bg-component p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Experience</h3>
       <ul>
         {
@@ -51,7 +51,7 @@ const resume: Resume = data;
                       >
                         {pos.skills.map((skill) => (
                           <li class="">
-                            <div class="flex items-center rounded-full bg-button px-3 py-1 text-xs font-medium leading-5">
+                            <div class="flex items-center rounded-full bg-bg-button px-3 py-1 text-xs font-medium leading-5">
                               {skill}
                             </div>
                           </li>
@@ -68,7 +68,7 @@ const resume: Resume = data;
     </div>
 
     <!-- Education -->
-    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
+    <div class="space-y-4 bg-bg-component p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Education</h3>
       <ul class="space-y-6">
         {
@@ -101,7 +101,7 @@ const resume: Resume = data;
                 >
                   {institution.courses.map((course) => (
                     <li class="">
-                      <div class="flex items-center rounded-full bg-button2 px-3 py-1 font-medium">
+                      <div class="flex items-center rounded-full bg-bg-button px-3 py-1 font-medium">
                         {course}
                       </div>
                     </li>
@@ -117,7 +117,7 @@ const resume: Resume = data;
     </div>
 
     <!-- Certifications -->
-    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
+    <div class="space-y-4 bg-bg-component p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Certifications</h3>
       <ul class="space-y-6">
         {
@@ -131,7 +131,7 @@ const resume: Resume = data;
                 href={cert.credentialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 hover:text-secondary-text hover:bg-links/95 hover:border-secondary-text transition-colors duration-300 ease-in-out"
+                class="inline-flex items-center rounded-full bg-bg-button px-3 py-1 text-xs font-medium leading-5 hover:text-hover-text hover:bg-bg-component transition-colors duration-300 ease-in-out"
               >
                 Show Certificate
               </a>
@@ -142,7 +142,7 @@ const resume: Resume = data;
     </div>
 
     <!-- Volunteering -->
-    <div class="space-y-4 bg-highlight/10 p-6 rounded-xl">
+    <div class="space-y-4 bg-bg-component p-6 rounded-xl">
       <h3 class="font-semibold tracking-widest uppercase">Volunteering</h3>
       <ul class="space-y-6">
         {

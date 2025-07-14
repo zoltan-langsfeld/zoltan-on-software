@@ -63,7 +63,7 @@ console.log("visiblePages Array:", getVisiblePages(current, total));
     href={isPrevDisabled ? "#" : `${prevUrl}`}
     aria-disabled={isPrevDisabled}
     class={cn(
-      "flex items-center gap-2 hover:text-hover text-primary-text transition-colors duration-300 ease-in-out",
+      "flex items-center gap-2 text-primary-text hover:text-hover-text transition-colors duration-300 ease-in-out",
       {
         "cursor-default opacity-50": isPrevDisabled,
         "cursor-pointer": !isPrevDisabled,
@@ -90,9 +90,9 @@ console.log("visiblePages Array:", getVisiblePages(current, total));
           class={cn(
             "px-2 py-1 hover:text-hover-text transition-colors duration-300 ease-in-out rounded-md",
             {
-              "border border-primary-text/50 font-medium hover:bg-blue-900/25":
+              "border border-primary-text/50 font-medium hover:bg-bg-component hover:border-hover-text":
                 isActive,
-              "hover:bg-blue-900/35 cursor-pointer": !isActive,
+              "hover:bg-bg-component cursor-pointer": !isActive,
             }
           )}
         >

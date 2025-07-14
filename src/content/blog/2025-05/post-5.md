@@ -70,19 +70,7 @@ This is a non-exhaustive list of features I believe are essential for a friction
 
   This results in a codeblock that looks like this:
 
-  ```ts title="example.ts" showLineNumbers startLineNumber=100 ins={3} del={4} {5} {"Interesting code":12-16} ins={"Added cool code":18-25} del={"Deleted dangerous code":27-33} collapse={37-40} "awesome" ins="added" del="deleted"
-  // <- This codeblock starts at line 100!
-
-  // This line should be marked as a diff addition
-  // This line should be marked as a diff deletion
-  // This line should be highlighted
-
-  // The keyword "added" will be highlighted in green
-  // The keyword "deleted" will be highlighted in red
-  // The keyword "awesome" will be marked with gray
-
-  // Insert an empty line above code you wish to add a note to
-
+  ```ts 
   function demonstrateFeatures() {
     console.log("Hello world!");
     return true;
@@ -122,7 +110,7 @@ This is a non-exhaustive list of features I believe are essential for a friction
 
 - The `cn(){:js}` function is a utility function which combines [clsx](https://www.npmjs.com/package/clsx) and [tailwind-merge](https://www.npmjs.com/package/tailwind-merge), two packages which allow painless conditional class addition and concatenation:
 
-  ```tsx title="src⠀›⠀lib⠀›⠀utils.ts" caption="A utility function for class name concatenation" showLineNumbers
+  ```tsx 
   import { type ClassValue, clsx } from "clsx";
   import { twMerge } from "tailwind-merge";
 
