@@ -120,7 +120,7 @@
   --bg-button: oklch(0.75 0.05 260 / 0.18);
   --primary-text: oklch(0.996 0.03 99.5);
   --hover-text: oklch(0.9735 0.0148 221.29);
-  --spotlight: oklch(0.4 0.1 260 / 1);
+  --spotlight: oklch(0.4 0.4 260 / 0.2);
 
   --links: oklch(0.94 .12 260);
   --accent: oklch(0.996 0.09 99.5);
