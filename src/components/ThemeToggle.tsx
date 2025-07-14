@@ -37,7 +37,7 @@ const ThemeToggle = () => {
 
   return (
     <div className="md:basis-1/3 flex justify-end">
-      <button className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary-text" onClick={toggleTheme}/>
+      <button className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary-text cursor-pointer" onClick={toggleTheme}/>
     </div>
   );
 };

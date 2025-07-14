@@ -92,7 +92,7 @@ From here, I ran `npx patch-package rehype-pretty-code`, which created a `patche
    return element.tagName === "code" && isElement(parent) && parent.tagName !== "pre" || element.tagName === "inlineCode";
  }
  function isBlockCode(element) {
--  return element.tagName === "pre" && Array.isArray(element.children) && element.children.length === 1 && isElement(element.children[0]) && element.children[0].tagName === "code";
+
 +  return false;
  }
  function getInlineCodeLang(meta, defaultFallbackLang) {

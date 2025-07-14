@@ -58,7 +58,7 @@ const Header = () => {
             {NAV_LINKS.map((link) => (
               <li
                 key={link.name}
-                className="border-b py-2 active:scale-105 active:font-medium active:border-b-2"
+                className="border-b py-2 active:scale-95 active:bg-muted"
               >
                 <a href={link.href} className="block">
                   {link.name}
