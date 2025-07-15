@@ -18,63 +18,69 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link
-    rel="icon"
-    type="image/svg+xml"
-    href="/zoltan-on-software/z-logo.svg"
+      rel="icon"
+      type="image/svg+xml"
+      href="/zoltan-on-software/z-logo.svg"
     />
     <link
-    rel="preload"
-    href="/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf"
-    as="font"
-    type="font/ttf"
-    crossorigin="anonymous"
+      rel="preload"
+      href="/zoltan-on-software/fonts/Syne/Syne-VariableFont.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
     />
     <link
-    rel="preload"
-    href="/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf"
-    as="font"
-    type="font/ttf"
-    crossorigin="anonymous"
+      rel="preload"
+      href="/zoltan-on-software/fonts/Montserrat/Montserrat-VariableFont.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ClientRouter fallback="none"/>
-   <ThemeHeadScript />
+    <ClientRouter fallback="none" />
+    <ThemeHeadScript />
   </head>
   <body>
     <div
-      class="flex h-fit min-h-screen flex-col gap-y-6 md:gap-y-12 px-4 md:p-0 relative"
+      class="flex h-fit min-h-screen flex-col gap-y-6 md:gap-y-12 relative"
     >
-      <Header client:load transition:persist/>
-      <main transition:animate={fade({ duration: "0.5s" })}
-        class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14"
+      <Header client:load />
+      <main
+        transition:animate={fade({ duration: "0.5s" })}
+        class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14 relative"
       >
         <!-- Main Content Column -->
-        <div class="flex min-w-0 grow flex-col gap-y-1 items-end">
+        <div
+          class="flex min-w-0 grow flex-col gap-y-1 items-end relative"
+        >
           <slot />
         </div>
 
         <!-- Sidebar -->
-        <Sidebar transition:persist transition:name="sidebar" currentPath={currentPath}/>
+        <Sidebar
+          transition:persist
+          transition:name="sidebar"
+          currentPath={currentPath}
+        />
       </main>
       <Footer />
     </div>
-  
-  </body>
-  <div
-      class="body-twin fixed pointer-events-none inset-0 z-[10] mix-blend-screen dark:mix-blend-lighten spotlight-effect"
-    >
-    </div>
-    <script>
-      document.addEventListener("mousemove", (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        
-        const bodyTwin = document.querySelector(".body-twin") as HTMLElement | null;
-        bodyTwin?.style.setProperty('--x', `${x}px`);
-        bodyTwin?.style.setProperty('--y', `${y}px`);
-        bodyTwin?.style.setProperty('--opacity', '1');
-      })
-    </script>
-</html>
+  </body><div
+    class="body-twin fixed pointer-events-none inset-0 z-[10] mix-blend-screen dark:mix-blend-lighten spotlight-effect"
+  >
+  </div>
+  <script>
+    document.addEventListener("mousemove", (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
 
+      const bodyTwin = document.querySelector(
+        ".body-twin"
+      ) as HTMLElement | null;
+      bodyTwin?.style.setProperty("--x", `${x}px`);
+      bodyTwin?.style.setProperty("--y", `${y}px`);
+      bodyTwin?.style.setProperty("--opacity", "1");
+    });
+  </script>
+</html>

@@ -3,7 +3,6 @@ module.exports = {
   content: [
     "./src/**/*.{astro,html,js,ts,jsx,tsx,md,mdx}", 
   ],
-  safelist: ["prose", "prose-newDefault"], // IMPORTANT: this ensures they aren't purged
   theme: {
     extend: {
       typography: {

@@ -15,8 +15,8 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 z-10 backdrop-blur-md">
-      <div className="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl px-6 items-center py-4 gap-x-2 md:gap-x-14">
+    <div className="sticky top-0 z-10 backdrop-header">
+      <div className="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl p-6 items-center gap-x-2 md:gap-x-14">
         <div className="flex min-w-0 grow md:basis-2/3 items-center justify-between">
           <a
             href={`${import.meta.env.BASE_URL}`}
