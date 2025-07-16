@@ -1,9 +1,9 @@
 <script is:inline>
   function applyTheme() {
-    const currentTheme = localStorage.getItem('theme');
+    const storedTheme = localStorage.getItem('theme');
 
     const shouldUseDark =
-      currentTheme === 'dark' ||
+      storedTheme === 'dark' ||
       (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
     if (shouldUseDark) {
