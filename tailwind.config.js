@@ -81,6 +81,8 @@ module.exports = {
               borderCollapse: "collapse",
               marginTop: "1.5rem",
               marginBottom: "1.5rem",
+              tableLayout: "fixed",
+              fontSize: "0.875rem",
             },
             th: {
               borderColor: "var(--primary-text)",
@@ -88,7 +90,6 @@ module.exports = {
             },
             td: {
               borderColor: "var(--primary-text)",
-              padding: "0.5rem 1rem",
             },
           },
         },

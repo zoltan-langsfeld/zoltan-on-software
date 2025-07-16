@@ -47,28 +47,60 @@
       font-size 0.15s cubic-bezier(0.62, 0.16, 0.13, 1.01);
   }
 
-
   .backdrop-header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
-      mask-image: linear-gradient(
-        rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 1) 70%,
-        rgba(0, 0, 0, 0) 100%
-      );
+    mask-image: linear-gradient(
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 70%,
+      rgba(0, 0, 0, 0) 100%
+    );
 
-      background:linear-gradient(
-        var(--bg-body) 10%,
-        transparent 90%
-      );}
-  
-    @media (min-width: 640px) {
+    background: linear-gradient(var(--bg-body) 10%, transparent 90%);
+  }
+
+  .dark-mode-toggle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--bg-body); /* or any "hover" color you want */
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1;
+  }
+
+  .dark-mode-toggle:hover::before {
+    transform: translateX(0%);
+  }
+
+  .dark-mode-toggle::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--bg-body); /* or your "hover dome" color */
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 2;
+  }
+
+  .dark-mode-toggle:hover::after {
+    transform: translateX(0%);
+  }
+
+  @media (min-width: 640px) {
     .sidebar .nav a:hover {
       transform: scale(1.1);
       font-size: 1.2rem;
@@ -90,8 +122,6 @@
       );
     }
   }
-
-
 }
 
 /* ---------------------- Fonts + Theme ---------------------- */

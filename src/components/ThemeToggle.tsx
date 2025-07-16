@@ -3,14 +3,6 @@ import { useState, useEffect } from "react";
 const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // useEffect(() => {
-  //     const browserTheme = localStorage.getItem('theme');
-  //     if (browserTheme === 'dark') {
-  //         setIsDarkMode(true);
-  //         document.documentElement.classList.add('dark');
-  //     }
-  // }, []);
-
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme === "dark") {
@@ -37,7 +29,13 @@ const ThemeToggle = () => {
 
   return (
     <div className="md:basis-1/3 flex justify-end">
-      <button className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary-text cursor-pointer" onClick={toggleTheme}/>
+      <button
+      className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-primary-text cursor-pointer dark-mode-toggle relative overflow-hidden"
+      onClick={toggleTheme}
+      title="Dark mode"
+      tabIndex={0} 
+      aria-label="Toggle dark mode" 
+      />
     </div>
   );
 };
