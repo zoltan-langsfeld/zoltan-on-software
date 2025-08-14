@@ -8,7 +8,7 @@ export type Site = {
     postsPerPage: number;
 }
 
-export type SocialLink = {
+export type Link = {
     href: string;
     label: string;
 };

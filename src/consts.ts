@@ -1,4 +1,4 @@
-import type { SocialLink, Site } from '@/types'
+import type { Link, Site } from '@/types'
 
 export const SITE: Site = {
   title: 'zoltan-on-software',
@@ -11,7 +11,7 @@ export const SITE: Site = {
   postsPerPage: 6,
 }
 
-export const NAV_LINKS: SocialLink[] = [
+export const NAV_LINKS: Link[] = [
   {
     href: '',
     label: 'home',
@@ -26,7 +26,7 @@ export const NAV_LINKS: SocialLink[] = [
   },
 ]
 
-export const SOCIAL_LINKS: SocialLink[] = [
+export const SOCIAL_LINKS: Link[] = [
   {
     href: 'https://github.com/zoltan-langsfeld',
     label: 'github',

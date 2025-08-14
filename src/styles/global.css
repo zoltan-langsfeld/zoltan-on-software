@@ -65,6 +65,7 @@
     background: linear-gradient(var(--bg-body) 10%, transparent 90%);
   }
 
+  
   .dark-mode-toggle::before {
     content: "";
     position: absolute;

@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{astro,html,js,ts,jsx,tsx,md,mdx}", 
-  ],
+  content: ["./src/**/*.{astro,html,js,ts,jsx,tsx,md,mdx}"],
   theme: {
     extend: {
       typography: {
@@ -15,10 +13,10 @@ module.exports = {
             "--tw-prose-counters": "var(--primary-text)",
             "--tw-prose-bullets": "var(--primary-text)",
             "--tw-prose-hr": "var(--primary-text)",
-            "--tw-prose-quotes": "var(--accent)",
+            "--tw-prose-quotes": "var(--hover-text)",
             "--tw-prose-quote-borders": "var(--hover-text)",
             "--tw-prose-captions": "var(--primary-text)",
-            "--tw-prose-code": "var(--accent)",
+            "--tw-prose-code": "var(--hover-text)",
             "--tw-prose-code-background": "var(--bg-code)",
             "--tw-prose-th-borders": "var(--primary-text)",
             "--tw-prose-td-borders": "var(--primary-text)",
@@ -54,35 +52,44 @@ module.exports = {
               padding: "1rem",
               borderRadius: "0.5rem",
               overflowX: "auto",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
             },
             code: {
               fontFamily: "var(--font-mono)",
-              color: "var(--hover-text)",
-              backgroundColor: "var(--bg-code)",
+              color: "var(--primary-text)",
+              backgroundColor: "var(--bg-button)",
               padding: "0.25rem 0.5rem",
               borderRadius: "0.25rem",
               fontWeight: "400",
+              whiteSpace: "pre-wrap",
+              wordWrap: "break-word",
             },
             blockquote: {
               fontStyle: "italic",
               paddingLeft: "1rem",
               marginTop: "1.5rem",
               marginBottom: "1.5rem",
+              fontWeight: "300",
             },
             li: {
               marginBottom: "0.5rem",
               paddingLeft: "1.5rem",
+            },
+            "li::marker": {
+              color: "var(--hover-text)",
             },
             img: {
               borderRadius: "0.5rem",
             },
             table: {
               width: "100%",
-              borderCollapse: "collapse",
+              overflowX: "auto",
+              display: "block", 
+              fontSize: "0.875rem",
               marginTop: "1.5rem",
               marginBottom: "1.5rem",
-              tableLayout: "fixed",
-              fontSize: "0.875rem",
+              borderCollapse: "collapse",
             },
             th: {
               borderColor: "var(--primary-text)",

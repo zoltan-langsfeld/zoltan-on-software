@@ -45,9 +45,9 @@ const currentPath = Astro.url.pathname;
     <div
       class="flex h-fit min-h-screen flex-col gap-y-6 md:gap-y-12 relative"
     >
-      <Header client:load />
+      <Header client:load/>
       <main
-        transition:animate={fade({ duration: "0.5s" })}
+        transition:animate={fade({ duration: "0.3s" })}
         class="mx-auto grid grid-cols-[11fr_1fr] md:grid-cols-[4fr_1fr] w-full max-w-3xl grow px-6 gap-x-2 md:gap-x-14 relative"
       >
         <!-- Main Content Column -->
@@ -59,8 +59,6 @@ const currentPath = Astro.url.pathname;
 
         <!-- Sidebar -->
         <Sidebar
-          transition:persist
-          transition:name="sidebar"
           currentPath={currentPath}
         />
       </main>
